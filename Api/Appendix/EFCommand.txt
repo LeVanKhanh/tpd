@@ -1,0 +1,2 @@
+Add-Migration -Name "tpd" -StartupProject "Tpd.Example.WebApi" -Project "Tpd.Example.Data.Write"
+Update-Database -StartupProject "Tpd.Example.WebApi" -Project "Tpd.Example.Data.Write"

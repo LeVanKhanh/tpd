@@ -3,3 +3,20 @@
 ################################################################################
 
 /.vs
+/Api/.vs/tpd
+/Api/Core/Tpd.Core.Data/bin/Debug/netcoreapp2.2
+/Api/Core/Tpd.Core.Data/obj
+/Api/Core/Tpd.Core.Domain/bin/Debug/netcoreapp2.2
+/Api/Core/Tpd.Core.Domain/obj
+/Api/Core/Tpd.Core.Share/bin/Debug/netcoreapp2.2
+/Api/Core/Tpd.Core.Share/obj
+/Api/Example/Tpd.Example.Data.Read/bin/Debug/netcoreapp2.2
+/Api/Example/Tpd.Example.Data.Read/obj
+/Api/Example/Tpd.Example.Data.Write/bin/Debug/netcoreapp2.2
+/Api/Example/Tpd.Example.Data.Write/obj
+/Api/Example/Tpd.Example.Domain/bin/Debug/netcoreapp2.2
+/Api/Example/Tpd.Example.Domain/obj
+/Api/Example/Tpd.Example.WebApi/bin/Debug/netcoreapp2.2
+/Api/Example/Tpd.Example.WebApi/obj
+/Api/tpd/bin/Debug/netcoreapp2.2
+/Api/tpd/obj
