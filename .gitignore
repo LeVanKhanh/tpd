@@ -20,3 +20,10 @@
 /Api/Example/Tpd.Example.WebApi/obj
 /Api/tpd/bin/Debug/netcoreapp2.2
 /Api/tpd/obj
+/Api/Core/Tpd.Core.Data/Tpd.Core.Data.csproj.user
+/Api/Core/Tpd.Core.Domain/Tpd.Core.Domain.csproj.user
+/Api/Core/Tpd.Core.Share/Tpd.Core.Share.csproj.user
+/Api/Example/Tpd.Example.Data.Read/Tpd.Example.Data.Read.csproj.user
+/Api/Example/Tpd.Example.Data.Write/Tpd.Example.Data.Write.csproj.user
+/Api/Example/Tpd.Example.Domain/Tpd.Example.Domain.csproj.user
+/Api/Example/Tpd.Example.WebApi/Tpd.Example.WebApi.csproj.user
