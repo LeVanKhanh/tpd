@@ -11,7 +11,7 @@ namespace Tpd.Core.Domain.HandlerCore.CommandHandlerCore
     public class CommandUpdateHandlerCore<TCommand, TEntity, TMolde> : CommandHandlerCore<TCommand>
         where TCommand : ICommandUpdateCore<TMolde>
         where TEntity : EntityCore
-        where TMolde : ICreatable
+        where TMolde : IEntityModel
 
     {
         protected readonly IMapper Mapper;
@@ -41,7 +41,7 @@ namespace Tpd.Core.Domain.HandlerCore.CommandHandlerCore
 
         protected virtual async Task<TEntity> GetOldEntityAsync(TCommand command)
         {
-            return Entity.Find(command.Model.Id);
+            return await Entity.FindAsync(command.Model.Id);
         }
 
         protected virtual async Task<TEntity> CreateNewEntityAsync(TEntity oldEntity, TCommand command)

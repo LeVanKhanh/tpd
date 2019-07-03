@@ -47,7 +47,7 @@ namespace Tpd.Core.Data
             {
                 if (item.Entity is IEntityCore entity)
                 {
-                    item.State = EntityState.Unchanged;
+                    item.State = EntityState.Modified;
                     entity.IsDeleted = true;
                 }
             }

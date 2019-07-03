@@ -27,3 +27,5 @@
 /Api/Example/Tpd.Example.Data.Write/Tpd.Example.Data.Write.csproj.user
 /Api/Example/Tpd.Example.Domain/Tpd.Example.Domain.csproj.user
 /Api/Example/Tpd.Example.WebApi/Tpd.Example.WebApi.csproj.user
+/Api/Core/Tpd.Core.WebApi/bin/Debug/netcoreapp2.2
+/Api/Core/Tpd.Core.WebApi/obj

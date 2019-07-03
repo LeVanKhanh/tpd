@@ -11,6 +11,7 @@ namespace Tpd.Core.Data
         {
             services.AddDbContext<TDatabaseContext>(options =>
                  options.UseSqlServer(configuration.GetConnectionString(connectionStringName)));
+            services.AddTransient<TDatabaseContext>();
         }
 
         public static void AddDataSqlite<TDatabaseContext>(this IServiceCollection services, IConfiguration configuration, string connectionStringName)
@@ -18,12 +19,15 @@ namespace Tpd.Core.Data
         {
             services.AddDbContext<TDatabaseContext>(options =>
                  options.UseSqlite(configuration.GetConnectionString(connectionStringName)));
+            services.AddTransient<TDatabaseContext>();
         }
 
         public static void AddDataInMemory<TDatabaseContext>(this IServiceCollection services, string dataBaseName)
             where TDatabaseContext : DatabaseContextCore
         {
             services.AddDbContext<TDatabaseContext>(options => options.UseInMemoryDatabase(dataBaseName));
+            services.AddTransient<TDatabaseContext>();
+
         }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Tpd.Core.Domain.ModelCore
 {
-    public interface ICreatable
+    public interface IEntityModel
     {
         Guid Id { get; set; }
     }

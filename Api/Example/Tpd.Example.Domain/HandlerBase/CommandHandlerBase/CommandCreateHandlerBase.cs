@@ -10,7 +10,7 @@ namespace Tpd.Example.Domain.HandlerBase.CommandHandlerBase
     public class CommandCreateHandlerBase<TCommand, TEntity, TModel> : CommandCreateHandlerCore<TCommand, TEntity, TModel>
         where TCommand : ICommandCreateCore<TModel>
         where TEntity : EntityCore
-        where TModel : ICreatable
+        where TModel : IEntityModel
     {
         protected new DatabaseWriteContext Data { get; set; }
         public CommandCreateHandlerBase(DatabaseWriteContext data, IMapper mapper)

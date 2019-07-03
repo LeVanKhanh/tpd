@@ -3,7 +3,7 @@
 namespace Tpd.Core.Domain.RequestCore.CommandCore
 {
     public interface ICommandCreateCore<TModel> : ICommandCore
-        where TModel: ICreatable
+        where TModel: IEntityModel
     {
         TModel Model { get; set; }
     }
