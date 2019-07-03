@@ -29,3 +29,5 @@
 /Api/Example/Tpd.Example.WebApi/Tpd.Example.WebApi.csproj.user
 /Api/Core/Tpd.Core.WebApi/bin/Debug/netcoreapp2.2
 /Api/Core/Tpd.Core.WebApi/obj
+/Api/Utility/Tpd.MultiLanguage/bin/Debug/netcoreapp2.2
+/Api/Utility/Tpd.MultiLanguage/obj

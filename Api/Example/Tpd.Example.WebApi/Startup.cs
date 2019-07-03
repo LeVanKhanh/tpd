@@ -10,6 +10,7 @@ using Tpd.Example.Data.Write;
 using Tpd.Example.Domain;
 using Tpd.Example.Domain.HandlerBase;
 using Tpd.Example.WebApi.StartupConfig;
+using Tpd.Example.Data.Read;
 
 namespace Tpd.Example.WebApi
 {
@@ -35,7 +36,10 @@ namespace Tpd.Example.WebApi
                 Assembly.GetAssembly(typeof(Core.Domain.RequestCore.RequestCore)));
 
             services.AddSwagger(Configuration);
-            services.AddDataSql(Configuration, "DBConnectionWrite");
+
+            services.AddDataWriteSql(Configuration, "DBConnectionWrite");
+            services.AddDataReadSql(Configuration, "DBConnectionRead");
+
             services.AddDomain();
         }
 

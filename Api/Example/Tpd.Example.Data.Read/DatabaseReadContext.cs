@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Tpd.Core.Data;
+using Tpd.Example.Data.Read.Entities;
 
 namespace Tpd.Example.Data.Read
 {
@@ -10,5 +11,7 @@ namespace Tpd.Example.Data.Read
         {
 
         }
+
+        public DbSet<MasterDataCategory> MasterDataCategory { get; set; }
     }
 }
