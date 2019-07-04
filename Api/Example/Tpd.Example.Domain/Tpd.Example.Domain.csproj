@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="HandlerBase\QueryHandlerBase\" />
     <Folder Include="MasterDataCategoryDomain\Result\" />
   </ItemGroup>
 
@@ -16,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Core\Tpd.Core.Domain\Tpd.Core.Domain.csproj" />
+    <ProjectReference Include="..\Tpd.Example.Data.Read\Tpd.Example.Data.Read.csproj" />
     <ProjectReference Include="..\Tpd.Example.Data.Write\Tpd.Example.Data.Write.csproj" />
   </ItemGroup>
 

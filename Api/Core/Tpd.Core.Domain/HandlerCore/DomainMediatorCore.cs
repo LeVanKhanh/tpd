@@ -4,8 +4,10 @@ using System;
 using System.Threading.Tasks;
 using Tpd.Core.Data;
 using Tpd.Core.Domain.HandlerCore.CommandHandlerCore;
+using Tpd.Core.Domain.HandlerCore.QueryHandlerCore;
 using Tpd.Core.Domain.ModelCore;
 using Tpd.Core.Domain.RequestCore.CommandCore;
+using Tpd.Core.Domain.RequestCore.QueryCore;
 
 namespace Tpd.Core.Domain.HandlerCore
 {
@@ -51,6 +53,18 @@ namespace Tpd.Core.Domain.HandlerCore
             var handler = _serviceProvider.GetService<THandler>();
             command.Id = id;
             var result = await handler.Handle(command);
+            return result.Result;
+        }
+
+        protected async Task<TResponse> GetItem<THandler, TEntity, TResponse>(Guid id)
+            where THandler : QueryByIdCore<TEntity, TResponse>
+            where TEntity : EntityCore
+            where TResponse : new()
+        {
+            var query = _serviceProvider.GetService<IQueryByIdCore<TResponse>>();
+            var handler = _serviceProvider.GetService<THandler>();
+            query.Id = id;
+            var result = await handler.Handle(query);
             return result.Result;
         }
     }

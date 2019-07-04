@@ -3,12 +3,12 @@ using Tpd.Core.Domain.ModelCore;
 
 namespace Tpd.Core.WebApi.Controller
 {
-    public class CurdControllerCore<TModelCreate, TModelUpdate> : ControllerCore
+    public class CurdControllerCore<TModelCreate, TModelUpdate, TResponse> : ControllerCore
         where TModelCreate : IEntityModel
         where TModelUpdate : IEntityModel
     {
-        protected IDomainMediator<TModelCreate, TModelUpdate> DomainMediator { get; set; }
-        public CurdControllerCore(IDomainMediator<TModelCreate, TModelUpdate> domainMediator)
+        protected IDomainMediator<TModelCreate, TModelUpdate, TResponse> DomainMediator { get; set; }
+        public CurdControllerCore(IDomainMediator<TModelCreate, TModelUpdate, TResponse> domainMediator)
            : base(domainMediator.Mediator)
         {
             DomainMediator = domainMediator;

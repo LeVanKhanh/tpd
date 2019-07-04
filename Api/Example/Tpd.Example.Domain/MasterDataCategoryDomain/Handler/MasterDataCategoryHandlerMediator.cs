@@ -8,7 +8,8 @@ using Tpd.Example.Domain.MasterDataCategoryDomain.Model;
 
 namespace Tpd.Example.Domain.MasterDataCategoryDomain.Handler
 {
-    public class MasterDataCategoryHandlerMediator : DomainMediatorBase, IDomainMediator<MasterDataCategoryModel, MasterDataCategoryModel>
+    public class MasterDataCategoryHandlerMediator : DomainMediatorBase,
+        IDomainMediator<MasterDataCategoryModel, MasterDataCategoryModel, MasterDataCategoryModel>
     {
         public MasterDataCategoryHandlerMediator(IServiceProvider serviceProvider, IMediator mediator)
             : base(serviceProvider, mediator)
@@ -32,5 +33,9 @@ namespace Tpd.Example.Domain.MasterDataCategoryDomain.Handler
             return await Remove<MasterDataCategory>(id);
         }
 
+        public async Task<MasterDataCategoryModel> GetItem(Guid id)
+        {
+            return await GetItem<MasterDataCategory, MasterDataCategoryModel>(id);
+        }
     }
 }

@@ -2,13 +2,13 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Tpd.Core.Data;
-using Tpd.Core.Domain.RequestCore;
+using Tpd.Core.Domain.RequestCore.QueryCore;
 using Tpd.Core.Domain.ResultCore;
 
 namespace Tpd.Core.Domain.HandlerCore.QueryHandlerCore
 {
     public abstract class QuerySingleHandlerCore<TQuery, TResponse> : QueryHandlerCore<TQuery, TResponse>
-        where TQuery : IRequestCore<TResponse>
+        where TQuery : IQuerySingleCore<TResponse>
         where TResponse : new()
     {
         public QuerySingleHandlerCore(DatabaseContextCore data)

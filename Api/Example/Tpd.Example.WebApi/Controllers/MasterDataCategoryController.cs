@@ -9,9 +9,9 @@ namespace Tpd.Example.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MasterDataCategoryController : CurdControllerCore<MasterDataCategoryModel, MasterDataCategoryModel>
+    public class MasterDataCategoryController : CurdControllerCore<MasterDataCategoryModel, MasterDataCategoryModel, MasterDataCategoryModel>
     {
-        public MasterDataCategoryController(IDomainMediator<MasterDataCategoryModel, MasterDataCategoryModel> domainMediator)
+        public MasterDataCategoryController(IDomainMediator<MasterDataCategoryModel, MasterDataCategoryModel, MasterDataCategoryModel> domainMediator)
             : base(domainMediator)
         {
         }
@@ -33,5 +33,13 @@ namespace Tpd.Example.WebApi.Controllers
         {
             var resut = await DomainMediator.Remove(id);
         }
+
+        [HttpGet("id")]
+        public async Task<MasterDataCategoryModel> GetItem(Guid id)
+        {
+            var result = await DomainMediator.GetItem(id);
+            return result;
+        }
+
     }
 }

@@ -8,7 +8,7 @@ using Tpd.Core.Share;
 
 namespace Tpd.Core.Domain.HandlerCore.CommandHandlerCore
 {
-    public class CommandUpdateHandlerCore<TCommand, TEntity, TMolde> : CommandHandlerCore<TCommand>
+    public abstract class CommandUpdateHandlerCore<TCommand, TEntity, TMolde> : CommandHandlerCore<TCommand>
         where TCommand : ICommandUpdateCore<TMolde>
         where TEntity : EntityCore
         where TMolde : IEntityModel

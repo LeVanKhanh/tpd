@@ -5,7 +5,7 @@ using Tpd.Core.Domain.RequestCore.CommandCore;
 
 namespace Tpd.Core.Domain.HandlerCore.CommandHandlerCore
 {
-    public class CommandRemoveHandlerCore<TCommand, TEntity> : CommandHandlerCore<TCommand>
+    public abstract class CommandRemoveHandlerCore<TCommand, TEntity> : CommandHandlerCore<TCommand>
         where TCommand : ICommandRemoveCore
         where TEntity : EntityCore
     {

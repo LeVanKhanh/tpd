@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Tpd.Core.Domain;
 using Tpd.Example.Domain.HandlerBase.CommandHandlerBase;
+using Tpd.Example.Domain.HandlerBase.QueryHandlerBase;
 
 namespace Tpd.Example.Domain
 {
@@ -11,7 +12,8 @@ namespace Tpd.Example.Domain
             services.AddDomain(typeof(DomainBuilderHelper),
                 typeof(CommandCreateHandlerBase<,,>),
                 typeof(CommandUpdateHandlerBase<,,>),
-                typeof(CommandRemoveHandlerBase<,>));
+                typeof(CommandRemoveHandlerBase<,>),
+                typeof(QueryByIdBase<,>));
         }
     }
 }

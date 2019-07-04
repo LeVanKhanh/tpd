@@ -5,7 +5,7 @@ using Tpd.Core.Domain.ModelCore;
 
 namespace Tpd.Core.Domain.HandlerCore
 {
-    public interface IDomainMediator<TModelCreate, TModelUpdate>
+    public interface IDomainMediator<TModelCreate, TModelUpdate, TResponse>
         where TModelCreate : IEntityModel
         where TModelUpdate : IEntityModel
     {
@@ -13,5 +13,6 @@ namespace Tpd.Core.Domain.HandlerCore
         Task<int> Create(TModelCreate model);
         Task<int> Update(TModelCreate model);
         Task<int> Remove(Guid id);
+        Task<TResponse> GetItem(Guid id);
     }
 }

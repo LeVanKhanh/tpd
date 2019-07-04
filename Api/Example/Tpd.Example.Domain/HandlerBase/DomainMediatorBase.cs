@@ -6,6 +6,7 @@ using Tpd.Core.Domain.HandlerCore;
 using Tpd.Core.Domain.ModelCore;
 using Tpd.Core.Domain.RequestCore.CommandCore;
 using Tpd.Example.Domain.HandlerBase.CommandHandlerBase;
+using Tpd.Example.Domain.HandlerBase.QueryHandlerBase;
 
 namespace Tpd.Example.Domain.HandlerBase
 {
@@ -34,6 +35,13 @@ namespace Tpd.Example.Domain.HandlerBase
             where TEntity : EntityCore
         {
             return await Remove<CommandRemoveHandlerBase<ICommandRemoveCore, TEntity>, TEntity>(id);
+        }
+
+        protected async Task<TResponse> GetItem<TEntity, TResponse>(Guid id)
+            where TEntity : EntityCore
+            where TResponse : new()
+        {
+            return await GetItem<QueryByIdBase<TEntity, TResponse>, TEntity, TResponse>(id);
         }
     }
 }

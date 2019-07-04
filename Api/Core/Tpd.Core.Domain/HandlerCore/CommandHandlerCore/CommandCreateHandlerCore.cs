@@ -9,7 +9,7 @@ using Tpd.Core.Share;
 
 namespace Tpd.Core.Domain.HandlerCore.CommandHandlerCore
 {
-    public class CommandCreateHandlerCore<TCommand, TEntity, TModel> : CommandHandlerCore<TCommand>
+    public abstract class CommandCreateHandlerCore<TCommand, TEntity, TModel> : CommandHandlerCore<TCommand>
         where TCommand : ICommandCreateCore<TModel>
         where TEntity : EntityCore
         where TModel : IEntityModel
