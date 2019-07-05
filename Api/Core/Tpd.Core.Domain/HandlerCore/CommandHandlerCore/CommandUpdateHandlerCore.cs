@@ -8,8 +8,7 @@ using Tpd.Core.Share;
 
 namespace Tpd.Core.Domain.HandlerCore.CommandHandlerCore
 {
-    public abstract class CommandUpdateHandlerCore<TCommand, TEntity, TMolde> : CommandHandlerCore<TCommand>
-        where TCommand : ICommandUpdateCore<TMolde>
+    public abstract class CommandUpdateHandlerCore<TEntity, TMolde> : CommandHandlerCore<ICommandUpdateCore<TMolde>>
         where TEntity : EntityCore
         where TMolde : IEntityModel
 
@@ -24,7 +23,7 @@ namespace Tpd.Core.Domain.HandlerCore.CommandHandlerCore
             Mapper = mapper;
         }
 
-        protected override async Task<bool> TryBuildCommand(TCommand command, RequestContextCore Context)
+        protected override async Task<bool> TryBuildCommand(ICommandUpdateCore<TMolde> command, RequestContextCore Context)
         {
             var oldEntity = await GetOldEntityAsync(command);
 
@@ -39,12 +38,12 @@ namespace Tpd.Core.Domain.HandlerCore.CommandHandlerCore
             return true;
         }
 
-        protected virtual async Task<TEntity> GetOldEntityAsync(TCommand command)
+        protected virtual async Task<TEntity> GetOldEntityAsync(ICommandUpdateCore<TMolde> command)
         {
             return await Entity.FindAsync(command.Model.Id);
         }
 
-        protected virtual async Task<TEntity> CreateNewEntityAsync(TEntity oldEntity, TCommand command)
+        protected virtual async Task<TEntity> CreateNewEntityAsync(TEntity oldEntity, ICommandUpdateCore<TMolde> command)
         {
             var createdAt = oldEntity.CreatedAt;
             var entity = Mapper.Map(command.Model, oldEntity);

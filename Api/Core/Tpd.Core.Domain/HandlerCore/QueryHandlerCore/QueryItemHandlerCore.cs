@@ -8,21 +8,21 @@ using Tpd.Core.Domain.RequestCore.QueryCore;
 
 namespace Tpd.Core.Domain.HandlerCore.QueryHandlerCore
 {
-    public abstract class QueryByIdCore<TEntity, TResponse> : QuerySingleHandlerCore<IQueryByIdCore<TResponse>, TResponse>
+    public abstract class QueryItemHandlerCore<TEntity, TResponse> : QuerySingleHandlerCore<IQueryItemCore<TResponse>, TResponse>
         where TEntity : EntityCore
         where TResponse : new()
     {
         protected DbSet<TEntity> Entities;
         protected IMapper Mapper;
-        public QueryByIdCore(DatabaseContextCore data, IMapper mapper) : base(data)
+        public QueryItemHandlerCore(DatabaseContextCore data, IMapper mapper) : base(data)
         {
             Entities = data.Set<TEntity>();
             Mapper = mapper;
         }
 
-        protected override async Task<IQueryable<TResponse>> BuildQuery(IQueryByIdCore<TResponse> query, RequestContextCore context)
+        protected override async Task<IQueryable<TResponse>> BuildQuery(IQueryItemCore<TResponse> query, RequestContextCore context)
         {
-            return Entities.Where(w => w.Id == query.Id).ProjectTo<TResponse>();
+            return Entities.Where(w => w.Id == query.Id).ProjectTo<TResponse>(Mapper.ConfigurationProvider);
         }
     }
 }

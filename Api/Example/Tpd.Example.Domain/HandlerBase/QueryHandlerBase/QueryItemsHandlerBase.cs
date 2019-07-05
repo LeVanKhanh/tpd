@@ -5,12 +5,13 @@ using Tpd.Example.Data.Read;
 
 namespace Tpd.Example.Domain.HandlerBase.QueryHandlerBase
 {
-    public class QueryByIdBase<TEntity, TResponse> : QueryByIdCore<TEntity, TResponse>
+    public class QueryItemsHandlerBase<TEntity, TResponse> : QueryItemsHandlerCore<TEntity, TResponse>
         where TEntity : EntityCore
         where TResponse : new()
     {
-        protected new readonly DatabaseContextCore Data;
-        public QueryByIdBase(DatabaseReadContext data, IMapper mapper) : base(data, mapper)
+        protected new readonly DatabaseReadContext Data;
+        public QueryItemsHandlerBase(DatabaseReadContext data, IMapper mapper)
+            : base(data, mapper)
         {
             Data = data;
         }

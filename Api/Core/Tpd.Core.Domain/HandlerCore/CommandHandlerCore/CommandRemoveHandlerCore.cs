@@ -5,8 +5,7 @@ using Tpd.Core.Domain.RequestCore.CommandCore;
 
 namespace Tpd.Core.Domain.HandlerCore.CommandHandlerCore
 {
-    public abstract class CommandRemoveHandlerCore<TCommand, TEntity> : CommandHandlerCore<TCommand>
-        where TCommand : ICommandRemoveCore
+    public abstract class CommandRemoveHandlerCore<TEntity> : CommandHandlerCore<ICommandRemoveCore>
         where TEntity : EntityCore
     {
         protected DbSet<TEntity> Entity;
@@ -16,7 +15,7 @@ namespace Tpd.Core.Domain.HandlerCore.CommandHandlerCore
             Entity = Data.Set<TEntity>();
         }
 
-        protected override async Task<bool> TryBuildCommand(TCommand command, RequestContextCore Context)
+        protected override async Task<bool> TryBuildCommand(ICommandRemoveCore command, RequestContextCore Context)
         {
             var oldEntity = await Entity.FindAsync(command.Id);
             if (oldEntity != null)

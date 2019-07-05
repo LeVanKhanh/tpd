@@ -9,8 +9,7 @@ using Tpd.Core.Share;
 
 namespace Tpd.Core.Domain.HandlerCore.CommandHandlerCore
 {
-    public abstract class CommandCreateHandlerCore<TCommand, TEntity, TModel> : CommandHandlerCore<TCommand>
-        where TCommand : ICommandCreateCore<TModel>
+    public abstract class CommandCreateHandlerCore<TEntity, TModel> : CommandHandlerCore<ICommandCreateCore<TModel>>
         where TEntity : EntityCore
         where TModel : IEntityModel
     {
@@ -23,19 +22,19 @@ namespace Tpd.Core.Domain.HandlerCore.CommandHandlerCore
             Mapper = mapper;
         }
 
-        protected override async Task<bool> TryBuildCommand(TCommand command, RequestContextCore Context)
+        protected override async Task<bool> TryBuildCommand(ICommandCreateCore<TModel> command, RequestContextCore Context)
         {
             var entity = await CreateEntity(command);
             Entity.AddWithContext(Context, entity);
             return true;
         }
 
-        protected virtual async Task<TEntity> CreateEntity(TCommand command)
+        protected virtual async Task<TEntity> CreateEntity(ICommandCreateCore<TModel> command)
         {
             return Mapper.Map<TEntity>(command.Model);
         }
 
-        protected override async Task<bool> IsValid(TCommand command)
+        protected override async Task<bool> IsValid(ICommandCreateCore<TModel> command)
         {
             if (Exists(command))
             {
@@ -45,7 +44,7 @@ namespace Tpd.Core.Domain.HandlerCore.CommandHandlerCore
             return true;
         }
 
-        protected virtual bool Exists(TCommand command)
+        protected virtual bool Exists(ICommandCreateCore<TModel> command)
         {
             return Data.Set<TEntity>().Where(w => w.Id == command.Model.Id).Any();
         }

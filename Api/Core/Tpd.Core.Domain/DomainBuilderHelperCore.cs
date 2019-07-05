@@ -14,7 +14,7 @@ namespace Tpd.Core.Domain
             services.AddTransient(typeof(ICommandCreateCore<>), typeof(CommandCreateCore<>));
             services.AddTransient(typeof(ICommandUpdateCore<>), typeof(CommandUpdateCore<>));
             services.AddTransient(typeof(ICommandRemoveCore), typeof(CommandRemoveCore));
-            services.AddTransient(typeof(IQueryByIdCore<>), typeof(QueryByIdCore<>));
+            services.AddTransient(typeof(IQueryItemCore<>), typeof(QueryItemCore<>));
 
             foreach (var command in commands)
             {

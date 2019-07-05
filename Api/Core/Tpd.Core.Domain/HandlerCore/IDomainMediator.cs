@@ -11,7 +11,7 @@ namespace Tpd.Core.Domain.HandlerCore
     {
         IMediator Mediator { get; set; }
         Task<int> Create(TModelCreate model);
-        Task<int> Update(TModelCreate model);
+        Task<int> Update(TModelUpdate model);
         Task<int> Remove(Guid id);
         Task<TResponse> GetItem(Guid id);
     }

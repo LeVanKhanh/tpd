@@ -2,7 +2,7 @@
 
 namespace Tpd.Core.Domain.RequestCore.QueryCore
 {
-    public interface IQueryByIdCore<TResponse> : IQuerySingleCore<TResponse>
+    public interface IQueryItemCore<TResponse> : IQuerySingleCore<TResponse>
     {
         Guid Id { get; set; }
     }

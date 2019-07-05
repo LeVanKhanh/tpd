@@ -8,6 +8,7 @@ using Tpd.Core.Domain.HandlerCore.QueryHandlerCore;
 using Tpd.Core.Domain.ModelCore;
 using Tpd.Core.Domain.RequestCore.CommandCore;
 using Tpd.Core.Domain.RequestCore.QueryCore;
+using Tpd.Core.Domain.ResultCore;
 
 namespace Tpd.Core.Domain.HandlerCore
 {
@@ -24,7 +25,7 @@ namespace Tpd.Core.Domain.HandlerCore
         protected async Task<int> Create<THandler, TEntity, TModel>(TModel model)
             where TEntity : EntityCore
             where TModel : IEntityModel
-            where THandler : CommandCreateHandlerCore<ICommandCreateCore<TModel>, TEntity, TModel>
+            where THandler : CommandCreateHandlerCore<TEntity, TModel>
         {
             var command = _serviceProvider.GetService<ICommandCreateCore<TModel>>();
             var handler = _serviceProvider.GetService<THandler>();
@@ -36,7 +37,7 @@ namespace Tpd.Core.Domain.HandlerCore
         protected async Task<int> Update<THandler, TEntity, TModel>(TModel model)
             where TEntity : EntityCore
             where TModel : IEntityModel
-            where THandler : CommandUpdateHandlerCore<ICommandUpdateCore<TModel>, TEntity, TModel>
+            where THandler : CommandUpdateHandlerCore<TEntity, TModel>
         {
             var command = _serviceProvider.GetService<ICommandUpdateCore<TModel>>();
             var handler = _serviceProvider.GetService<THandler>();
@@ -47,7 +48,7 @@ namespace Tpd.Core.Domain.HandlerCore
 
         protected async Task<int> Remove<THandler, TEntity>(Guid id)
             where TEntity : EntityCore
-            where THandler : CommandRemoveHandlerCore<ICommandRemoveCore, TEntity>
+            where THandler : CommandRemoveHandlerCore<TEntity>
         {
             var command = _serviceProvider.GetService<ICommandRemoveCore>();
             var handler = _serviceProvider.GetService<THandler>();
@@ -57,13 +58,24 @@ namespace Tpd.Core.Domain.HandlerCore
         }
 
         protected async Task<TResponse> GetItem<THandler, TEntity, TResponse>(Guid id)
-            where THandler : QueryByIdCore<TEntity, TResponse>
+            where THandler : QueryItemHandlerCore<TEntity, TResponse>
             where TEntity : EntityCore
             where TResponse : new()
         {
-            var query = _serviceProvider.GetService<IQueryByIdCore<TResponse>>();
+            var query = _serviceProvider.GetService<IQueryItemCore<TResponse>>();
             var handler = _serviceProvider.GetService<THandler>();
             query.Id = id;
+            var result = await handler.Handle(query);
+            return result.Result;
+        }
+
+        protected async Task<PagedResultCore<TResponse>> GetItems<THandler, TEntity, TResponse>()
+            where THandler : QueryListHandlerCore<IQueryItemsCore<TResponse>, TResponse>
+            where TEntity : EntityCore
+            where TResponse : new()
+        {
+            var query = _serviceProvider.GetService<IQueryItemsCore<TResponse>>();
+            var handler = _serviceProvider.GetService<THandler>();
             var result = await handler.Handle(query);
             return result.Result;
         }

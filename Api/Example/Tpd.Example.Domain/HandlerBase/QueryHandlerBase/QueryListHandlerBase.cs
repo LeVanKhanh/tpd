@@ -9,9 +9,11 @@ namespace Tpd.Example.Domain.HandlerBase.QueryHandlerBase
         where TQuery : IQueryListCore<TResponse>
         where TResponse : new()
     {
+        protected new readonly DatabaseReadContext Data;
         public QueryListHandlerBase(DatabaseReadContext data)
             : base(data)
         {
+            Data = data;
         }
     }
 }

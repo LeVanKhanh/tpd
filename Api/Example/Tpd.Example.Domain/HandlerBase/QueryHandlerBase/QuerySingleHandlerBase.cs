@@ -8,10 +8,11 @@ namespace Tpd.Example.Domain.HandlerBase.QueryHandlerBase
         where TQuery : IQuerySingleCore<TResponse>
         where TResponse : new()
     {
+        protected new readonly DatabaseReadContext Data;
         public QuerySingleHandlerBase(DatabaseReadContext data)
             : base(data)
         {
-
+            Data = data;
         }
     }
 }

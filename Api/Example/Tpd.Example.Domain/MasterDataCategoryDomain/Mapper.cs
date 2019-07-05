@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
-using Tpd.Example.Data.Write.Entities;
+using DataWriteEntities = Tpd.Example.Data.Write.Entities;
+using DataReadEntities = Tpd.Example.Data.Read.Entities;
 using Tpd.Example.Domain.MasterDataCategoryDomain.Model;
 
 namespace Tpd.Example.Domain.MasterDataCategoryDomain
@@ -8,7 +9,8 @@ namespace Tpd.Example.Domain.MasterDataCategoryDomain
     {
         public Mapper()
         {
-            CreateMap<MasterDataCategory, MasterDataCategoryModel>().ReverseMap() ;
+            CreateMap<DataWriteEntities.MasterDataCategory, MasterDataCategoryModel>().ReverseMap();
+            CreateMap<DataReadEntities.MasterDataCategory, MasterDataCategoryModel>().ReverseMap();
         }
     }
 }

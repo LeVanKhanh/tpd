@@ -11,6 +11,7 @@ using Tpd.Example.Domain;
 using Tpd.Example.Domain.HandlerBase;
 using Tpd.Example.WebApi.StartupConfig;
 using Tpd.Example.Data.Read;
+using Tpd.Core.Domain.HandlerCore;
 
 namespace Tpd.Example.WebApi
 {
@@ -29,6 +30,7 @@ namespace Tpd.Example.WebApi
 
             services.AddAutoMapper(Assembly.GetExecutingAssembly(),
                 Assembly.GetAssembly(typeof(DomainMediatorBase)),
+                Assembly.GetAssembly(typeof(DomainMediatorCore)),
                 Assembly.GetAssembly(typeof(Core.Domain.RequestCore.RequestCore)));
 
             services.AddMediatR(Assembly.GetExecutingAssembly(),
