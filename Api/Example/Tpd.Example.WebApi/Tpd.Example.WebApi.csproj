@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Core\Tpd.Core.WebApi\Tpd.Core.WebApi.csproj" />
+    <ProjectReference Include="..\..\Utility\Tpd.MultiLanguage\Tpd.MultiLanguage.csproj" />
     <ProjectReference Include="..\Tpd.Example.Data.Read\Tpd.Example.Data.Read.csproj" />
     <ProjectReference Include="..\Tpd.Example.Data.Write\Tpd.Example.Data.Write.csproj" />
     <ProjectReference Include="..\Tpd.Example.Domain\Tpd.Example.Domain.csproj" />
