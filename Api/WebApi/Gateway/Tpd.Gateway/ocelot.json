@@ -1,0 +1,29 @@
+﻿{
+  "ReRoutes": [
+    {
+      "DownstreamPathTemplate": "/example/api/{catchAll}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/example/{catchAll}"
+    },
+    {
+      "DownstreamPathTemplate": "/language/api/{catchAll}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 9999
+        }
+      ],
+      "UpstreamPathTemplate": "/language/{catchAll}"
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost"
+  }
+}
