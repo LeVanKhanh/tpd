@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Swashbuckle.AspNetCore.Filters;
 using Swashbuckle.AspNetCore.Swagger;
 using System;
 using System.IO;
@@ -40,6 +41,8 @@ namespace Tpd.Example.WebApi.StartupConfig
                     Name = "Authorization",
                     Type = "apiKey"
                 });
+                // install Swashbuckle.AspNetCore.Filters
+                c.OperationFilter<SecurityRequirementsOperationFilter>();
                 // Set the comments path for the Swagger JSON and UI.
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
@@ -51,7 +54,7 @@ namespace Tpd.Example.WebApi.StartupConfig
             SwaggerBuilderExtensions.UseSwagger(app);
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                c.SwaggerEndpoint("swagger/v1/swagger.json", "My API V1");
                 //To serve the Swagger UI at the app's root (http://localhost:<port>/)
                 c.RoutePrefix = string.Empty;
             });
