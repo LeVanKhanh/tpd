@@ -2,15 +2,17 @@
 using System;
 using System.Threading.Tasks;
 using Tpd.Core.Domain.HandlerCore;
-using DataWriteEntities = Tpd.Example.Data.Write.Entities;
-using DataReadEntities = Tpd.Example.Data.Read.Entities;
+using Tpd.Core.Domain.ResultCore;
 using Tpd.Example.Domain.HandlerBase;
 using Tpd.Example.Domain.MasterDataCategoryDomain.Model;
+using Tpd.Example.Domain.MasterDataCategoryDomain.Request;
+using DataReadEntities = Tpd.Example.Data.Read.Entities;
+using DataWriteEntities = Tpd.Example.Data.Write.Entities;
 
 namespace Tpd.Example.Domain.MasterDataCategoryDomain.Handler
 {
     public class MasterDataCategoryHandlerMediator : DomainMediatorBase,
-        IDomainMediator<MasterDataCategoryModel, MasterDataCategoryModel, MasterDataCategoryModel>
+        IDomainMediator<MasterDataCategoryModel, MasterDataCategoryModel, MasterDataCategoryModel, GetMasterDataCategoriesQuery>
     {
         public MasterDataCategoryHandlerMediator(IServiceProvider serviceProvider, IMediator mediator)
             : base(serviceProvider, mediator)
@@ -36,6 +38,11 @@ namespace Tpd.Example.Domain.MasterDataCategoryDomain.Handler
         public async Task<MasterDataCategoryModel> GetItem(Guid id)
         {
             return await GetItem<DataReadEntities.MasterDataCategory, MasterDataCategoryModel>(id);
+        }
+
+        public async Task<IResultCore<PagedResultCore<MasterDataCategoryModel>>> GetItems(GetMasterDataCategoriesQuery query)
+        {
+            return await base.GetItems(query);
         }
     }
 }

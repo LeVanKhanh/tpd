@@ -9,14 +9,13 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System.Reflection;
 using System.Text;
+using Tpd.Core.Domain.HandlerCore;
 using Tpd.Example.Data.Read;
 using Tpd.Example.Data.Write;
 using Tpd.Example.Domain;
 using Tpd.Example.Domain.HandlerBase;
 using Tpd.Example.WebApi.StartupConfig;
 using Tpd.MultiLanguage;
-using Tpd.Example.Data.Read;
-using Tpd.Core.Domain.HandlerCore;
 
 namespace Tpd.Example.WebApi
 {
@@ -51,7 +50,6 @@ namespace Tpd.Example.WebApi
 
             services.AddAutoMapper(Assembly.GetExecutingAssembly(),
                 Assembly.GetAssembly(typeof(DomainMediatorBase)),
-                Assembly.GetAssembly(typeof(DomainMediatorCore)),
                 Assembly.GetAssembly(typeof(Core.Domain.RequestCore.RequestCore)));
 
             services.AddMediatR(Assembly.GetExecutingAssembly(),
@@ -64,7 +62,7 @@ namespace Tpd.Example.WebApi
             services.AddDataReadSql(Configuration, "DBConnectionRead");
 
             services.AddDomain();
-            services.AddMultilanguage();
+            //services.AddMultilanguage();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -81,7 +79,7 @@ namespace Tpd.Example.WebApi
             app.UseAuthentication();
             app.UseHttpsRedirection();
             app.UseMvc();
-            app.UseMultilanguage();
+            //app.UseMultilanguage();
         }
     }
 }

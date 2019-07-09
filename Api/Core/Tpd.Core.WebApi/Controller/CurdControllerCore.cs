@@ -3,15 +3,18 @@ using System;
 using System.Threading.Tasks;
 using Tpd.Core.Domain.HandlerCore;
 using Tpd.Core.Domain.ModelCore;
+using Tpd.Core.Domain.RequestCore.QueryCore;
+using Tpd.Core.Domain.ResultCore;
 
 namespace Tpd.Core.WebApi.Controller
 {
-    public class CurdControllerCore<TModelCreate, TModelUpdate, TResponse> : ControllerCore
+    public abstract class CurdControllerCore<TModelCreate, TModelUpdate, TResponse, TQuery> : ControllerCore
         where TModelCreate : IEntityModel
         where TModelUpdate : IEntityModel
+        where TQuery : IQueryListCore<TResponse>
     {
-        protected IDomainMediator<TModelCreate, TModelUpdate, TResponse> DomainMediator { get; set; }
-        public CurdControllerCore(IDomainMediator<TModelCreate, TModelUpdate, TResponse> domainMediator)
+        protected IDomainMediator<TModelCreate, TModelUpdate, TResponse, TQuery> DomainMediator { get; set; }
+        public CurdControllerCore(IDomainMediator<TModelCreate, TModelUpdate, TResponse, TQuery> domainMediator)
            : base(domainMediator.Mediator)
         {
             DomainMediator = domainMediator;
@@ -39,6 +42,13 @@ namespace Tpd.Core.WebApi.Controller
         public async Task<TResponse> GetItem(Guid id)
         {
             var result = await DomainMediator.GetItem(id);
+            return result;
+        }
+
+        [HttpPost("GetItems")]
+        public async Task<IResultCore<PagedResultCore<TResponse>>> GetItems([FromBody]TQuery query)
+        {
+            var result = await DomainMediator.GetItems(query);
             return result;
         }
     }
