@@ -7,5 +7,6 @@ namespace Tpd.Language.Data.Entities
     {
         public Guid ApplicationId { get; set; }
         public string Name { get; set; }
+        public Application Application { get; set; }
     }
 }

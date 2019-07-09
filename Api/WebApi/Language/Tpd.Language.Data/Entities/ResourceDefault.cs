@@ -1,6 +1,8 @@
-﻿namespace Tpd.Language.Data.Entities
+﻿using Tpd.Core.Data;
+
+namespace Tpd.Language.Data.Entities
 {
-    public class ResourceDefault
+    public class ResourceDefault:EntityCore
     {
         public string Name { get; set; }
         public string Value { get; set; }

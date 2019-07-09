@@ -18,5 +18,6 @@ namespace Tpd.Language.Data
         public DbSet<ResourceDefault> ResourceDefault { get; set; }
         public DbSet<ResoureEntry> ResoureEntry { get; set; }
         public DbSet<Translation> Translation { get; set; }
+        public DbSet<Culture> Culture { get; set; }
     }
 }
