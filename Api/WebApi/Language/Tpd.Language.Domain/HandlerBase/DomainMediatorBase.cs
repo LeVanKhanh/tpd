@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using Tpd.Core.Data;
 using Tpd.Core.Domain.HandlerCore;
 using Tpd.Core.Domain.ModelCore;
+using Tpd.Core.Domain.RequestCore.QueryCore;
+using Tpd.Core.Domain.ResultCore;
 using Tpd.Language.Domain.HandlerBase.CommandHandlerBase;
 using Tpd.Language.Domain.HandlerBase.QueryHandlerBase;
 
@@ -41,6 +43,13 @@ namespace Tpd.Language.Domain.HandlerBase
             where TResponse : new()
         {
             return await GetItem<QueryItemHandlerBase<TEntity, TResponse>, TEntity, TResponse>(id);
+        }
+
+        protected async Task<IResultCore<PagedResultCore<TResponse>>> GetItems<TResponse>(IQueryListCore<TResponse> query)
+             where TResponse : new()
+        {
+            var result = await Mediator.Send(query);
+            return result;
         }
     }
 }
