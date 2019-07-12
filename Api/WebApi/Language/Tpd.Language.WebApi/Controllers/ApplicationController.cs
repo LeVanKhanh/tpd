@@ -8,9 +8,11 @@ namespace Tpd.Language.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ApplicationController : CurdControllerCore<ApplicationModel, ApplicationModel, ApplicationModel, GetApplicationsQuery>
+    public class ApplicationController : CurdControllerCore<ApplicationModel, ApplicationModel, ApplicationModel, 
+        ApplicationModel, GetApplicationsQuery>
     {
-        public ApplicationController(IDomainMediator<ApplicationModel, ApplicationModel, ApplicationModel, GetApplicationsQuery> domainMediator)
+        public ApplicationController(IDomainMediator<ApplicationModel, ApplicationModel, ApplicationModel, 
+            ApplicationModel, GetApplicationsQuery> domainMediator)
             : base(domainMediator)
         {
         }

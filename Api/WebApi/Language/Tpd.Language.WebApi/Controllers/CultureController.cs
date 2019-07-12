@@ -8,9 +8,11 @@ namespace Tpd.Language.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CultureController : CurdControllerCore<CultureModel, CultureModel, CultureModel, GetCulturesQuery>
+    public class CultureController : CurdControllerCore<CultureModel, CultureModel, CultureModel,
+        CultureModel, GetCulturesQuery>
     {
-        public CultureController(IDomainMediator<CultureModel, CultureModel, CultureModel, GetCulturesQuery> domainMediator)
+        public CultureController(IDomainMediator<CultureModel, CultureModel, CultureModel,
+            CultureModel, GetCulturesQuery> domainMediator)
             : base(domainMediator)
         {
         }

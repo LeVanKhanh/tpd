@@ -11,7 +11,7 @@ using Tpd.Language.Domain.HandlerBase;
 namespace Tpd.Language.Domain.ApplicationDomain.Handler
 {
     public class ApplicationHandlerMediator : DomainMediatorBase,
-        IDomainMediator<ApplicationModel, ApplicationModel, ApplicationModel, GetApplicationsQuery>
+        IDomainMediator<ApplicationModel, ApplicationModel, ApplicationModel, ApplicationModel, GetApplicationsQuery>
     {
         public ApplicationHandlerMediator(IServiceProvider serviceProvider, IMediator mediator)
             : base(serviceProvider, mediator)

@@ -8,9 +8,12 @@ namespace Tpd.Example.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MasterDataCategoryController : CurdControllerCore<MasterDataCategoryModel, MasterDataCategoryModel, MasterDataCategoryModel, GetMasterDataCategoriesQuery>
+    public class MasterDataCategoryController
+        : CurdControllerCore<MasterDataCategoryModel, MasterDataCategoryModel, MasterDataCategoryModel,
+        MasterDataCategoryModel, GetMasterDataCategoriesQuery>
     {
-        public MasterDataCategoryController(IDomainMediator<MasterDataCategoryModel, MasterDataCategoryModel, MasterDataCategoryModel, GetMasterDataCategoriesQuery> domainMediator)
+        public MasterDataCategoryController(IDomainMediator<MasterDataCategoryModel, MasterDataCategoryModel, MasterDataCategoryModel,
+            MasterDataCategoryModel, GetMasterDataCategoriesQuery> domainMediator)
             : base(domainMediator)
         {
         }

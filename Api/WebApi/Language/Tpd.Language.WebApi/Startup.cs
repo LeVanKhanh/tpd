@@ -10,6 +10,7 @@ using Tpd.Core.WebApi.StartupConfig;
 using Tpd.Language.Data;
 using Tpd.Language.Domain;
 using Tpd.Language.Domain.HandlerBase;
+using Tpd.Language.WebApi.Helper;
 
 namespace Tpd.Language.WebApi
 {
@@ -52,7 +53,7 @@ namespace Tpd.Language.WebApi
             app.UseSwagger();
             app.UseHttpsRedirection();
             app.UseMvc();
-            //app.AddRPCServer(mediator);
+            app.AddRPCServer(mediator);
         }
     }
 }

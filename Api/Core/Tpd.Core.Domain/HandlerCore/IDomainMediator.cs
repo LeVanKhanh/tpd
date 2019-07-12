@@ -7,16 +7,16 @@ using Tpd.Core.Domain.ResultCore;
 
 namespace Tpd.Core.Domain.HandlerCore
 {
-    public interface IDomainMediator<TModelCreate, TModelUpdate, TResponse, TQuery>
+    public interface IDomainMediator<TModelCreate, TModelUpdate, TGetItemResponse, TGetItemsResponse, TQuery>
         where TModelCreate : IEntityModel
         where TModelUpdate : IEntityModel
-        where TQuery: IQueryListCore<TResponse>
+        where TQuery: IQueryListCore<TGetItemsResponse>
     {
         IMediator Mediator { get; set; }
         Task<int> Create(TModelCreate model);
         Task<int> Update(TModelUpdate model);
         Task<int> Remove(Guid id);
-        Task<TResponse> GetItem(Guid id);
-        Task<IResultCore<PagedResultCore<TResponse>>> GetItems(TQuery query);
+        Task<TGetItemResponse> GetItem(Guid id);
+        Task<IResultCore<PagedResultCore<TGetItemsResponse>>> GetItems(TQuery query);
     }
 }

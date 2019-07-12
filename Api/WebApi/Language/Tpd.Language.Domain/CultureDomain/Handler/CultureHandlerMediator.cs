@@ -13,7 +13,7 @@ using Tpd.Language.Domain.HandlerBase;
 namespace Tpd.Language.Domain.CultureDomain.Handler
 {
     public class CultureHandlerMediator : DomainMediatorBase,
-        IDomainMediator<CultureModel, CultureModel, CultureModel, GetCulturesQuery>
+        IDomainMediator<CultureModel, CultureModel, CultureModel, CultureModel, GetCulturesQuery>
     {
         public CultureHandlerMediator(IServiceProvider serviceProvider, IMediator mediator)
             : base(serviceProvider, mediator)

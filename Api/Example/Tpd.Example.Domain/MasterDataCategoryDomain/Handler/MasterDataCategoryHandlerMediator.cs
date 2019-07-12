@@ -12,7 +12,7 @@ using DataWriteEntities = Tpd.Example.Data.Write.Entities;
 namespace Tpd.Example.Domain.MasterDataCategoryDomain.Handler
 {
     public class MasterDataCategoryHandlerMediator : DomainMediatorBase,
-        IDomainMediator<MasterDataCategoryModel, MasterDataCategoryModel, MasterDataCategoryModel, GetMasterDataCategoriesQuery>
+        IDomainMediator<MasterDataCategoryModel, MasterDataCategoryModel, MasterDataCategoryModel, MasterDataCategoryModel, GetMasterDataCategoriesQuery>
     {
         public MasterDataCategoryHandlerMediator(IServiceProvider serviceProvider, IMediator mediator)
             : base(serviceProvider, mediator)

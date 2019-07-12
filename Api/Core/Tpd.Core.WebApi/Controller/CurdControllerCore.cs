@@ -8,13 +8,13 @@ using Tpd.Core.Domain.ResultCore;
 
 namespace Tpd.Core.WebApi.Controller
 {
-    public abstract class CurdControllerCore<TModelCreate, TModelUpdate, TResponse, TQuery> : ControllerCore
+    public abstract class CurdControllerCore<TModelCreate, TModelUpdate, TGetItemResponse, TGetItemsResponse, TQuery> : ControllerCore
         where TModelCreate : IEntityModel
         where TModelUpdate : IEntityModel
-        where TQuery : IQueryListCore<TResponse>
+        where TQuery : IQueryListCore<TGetItemsResponse>
     {
-        protected IDomainMediator<TModelCreate, TModelUpdate, TResponse, TQuery> DomainMediator { get; set; }
-        public CurdControllerCore(IDomainMediator<TModelCreate, TModelUpdate, TResponse, TQuery> domainMediator)
+        protected IDomainMediator<TModelCreate, TModelUpdate, TGetItemResponse, TGetItemsResponse, TQuery> DomainMediator { get; set; }
+        public CurdControllerCore(IDomainMediator<TModelCreate, TModelUpdate, TGetItemResponse, TGetItemsResponse, TQuery> domainMediator)
            : base(domainMediator.Mediator)
         {
             DomainMediator = domainMediator;
@@ -39,14 +39,14 @@ namespace Tpd.Core.WebApi.Controller
         }
 
         [HttpGet("id")]
-        public async Task<TResponse> GetItem(Guid id)
+        public async Task<TGetItemResponse> GetItem(Guid id)
         {
             var result = await DomainMediator.GetItem(id);
             return result;
         }
 
         [HttpPost("GetItems")]
-        public async Task<IResultCore<PagedResultCore<TResponse>>> GetItems([FromBody]TQuery query)
+        public async Task<IResultCore<PagedResultCore<TGetItemsResponse>>> GetItems([FromBody]TQuery query)
         {
             var result = await DomainMediator.GetItems(query);
             return result;
