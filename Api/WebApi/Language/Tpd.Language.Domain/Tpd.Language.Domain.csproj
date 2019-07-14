@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="8.4.0" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="8.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\..\Core\Tpd.Core.Data\Tpd.Core.Data.csproj" />
     <ProjectReference Include="..\..\..\Core\Tpd.Core.Domain\Tpd.Core.Domain.csproj" />
     <ProjectReference Include="..\Tpd.Language.Data\Tpd.Language.Data.csproj" />

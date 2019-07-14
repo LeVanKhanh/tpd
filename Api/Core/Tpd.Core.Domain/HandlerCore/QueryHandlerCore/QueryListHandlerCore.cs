@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Tpd.Core.Data;
+using Tpd.Core.Domain.FluentValidationCore;
 using Tpd.Core.Domain.Helper;
 using Tpd.Core.Domain.RequestCore.QueryCore;
 using Tpd.Core.Domain.ResultCore;
@@ -12,8 +13,8 @@ namespace Tpd.Core.Domain.HandlerCore.QueryHandlerCore
         where TQuery : IQueryListCore<TResponse>
         where TResponse : new()
     {
-        public QueryListHandlerCore(DatabaseContextCore data)
-            : base(data)
+        public QueryListHandlerCore(DatabaseContextCore data, IValidationService validationService)
+            : base(data, validationService)
         {
         }
         //

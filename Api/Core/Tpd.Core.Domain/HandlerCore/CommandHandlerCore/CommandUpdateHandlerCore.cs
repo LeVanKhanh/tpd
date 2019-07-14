@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using Tpd.Core.Data;
+using Tpd.Core.Domain.FluentValidationCore;
 using Tpd.Core.Domain.ModelCore;
 using Tpd.Core.Domain.RequestCore.CommandCore;
 using Tpd.Core.Share;
@@ -16,8 +17,8 @@ namespace Tpd.Core.Domain.HandlerCore.CommandHandlerCore
         protected readonly IMapper Mapper;
         protected DbSet<TEntity> Entity;
 
-        public CommandUpdateHandlerCore(DatabaseContextCore data, IMapper mapper)
-            : base(data)
+        public CommandUpdateHandlerCore(DatabaseContextCore data, IValidationService validationService, IMapper mapper)
+            : base(data, validationService)
         {
             Entity = Data.Set<TEntity>();
             Mapper = mapper;

@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
 using Tpd.Core.Data;
+using Tpd.Core.Domain.FluentValidationCore;
 using Tpd.Core.Domain.ModelCore;
 using Tpd.Core.Domain.RequestCore.CommandCore;
 using Tpd.Core.Share;
@@ -15,8 +16,8 @@ namespace Tpd.Core.Domain.HandlerCore.CommandHandlerCore
     {
         protected readonly IMapper Mapper;
         protected DbSet<TEntity> Entity;
-        public CommandCreateHandlerCore(DatabaseContextCore db, IMapper mapper)
-            : base(db)
+        public CommandCreateHandlerCore(DatabaseContextCore db, IValidationService validationService, IMapper mapper)
+            : base(db, validationService)
         {
             Entity = Data.Set<TEntity>();
             Mapper = mapper;
@@ -25,8 +26,18 @@ namespace Tpd.Core.Domain.HandlerCore.CommandHandlerCore
         protected override async Task<bool> TryBuildCommand(ICommandCreateCore<TModel> command, RequestContextCore Context)
         {
             var entity = await CreateEntity(command);
-            Entity.AddWithContext(Context, entity);
-            return true;
+            var validationResult = ValidationService.Validate(entity);
+
+            if (validationResult.IsValid)
+            {
+                Entity.AddWithContext(Context, entity);
+            }
+            else
+            {
+                command.Messages.AddRange(validationResult.Errors.Select(s => s.ErrorMessage));
+            }
+
+            return validationResult.IsValid;
         }
 
         protected virtual async Task<TEntity> CreateEntity(ICommandCreateCore<TModel> command)

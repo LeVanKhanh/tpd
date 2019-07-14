@@ -1,22 +1,25 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using Tpd.Core.Data;
+using Tpd.Core.Domain.FluentValidationCore;
 using Tpd.Language.Data;
 using Tpd.Language.Domain.HandlerBase.QueryHandlerBase;
-using Tpd.Language.Domain.TranslationDomain.Model;
 using Tpd.Language.Domain.TranslationDomain.Request;
+using Tpd.Language.Domain.TranslationDomain.Result;
 
 namespace Tpd.Language.Domain.TranslationDomain.Handler
 {
-    public class GetTranslationsHandler: QueryListHandlerBase<GetTranslationsQuery, ResoureEntryModel>
+    public class GetTranslationsHandler : QueryListHandlerBase<GetTranslationsQuery, ResoureEntryModel>
     {
-        public GetTranslationsHandler(DatabaseContext data) :base(data){
+        public GetTranslationsHandler(DatabaseContext data, IValidationService validationService)
+            : base(data, validationService)
+        {
 
         }
 
         protected override async Task<IQueryable<ResoureEntryModel>> BuildQueryAsync(GetTranslationsQuery query, RequestContextCore context)
         {
-            
+
             if (string.IsNullOrEmpty(query.Application))
             {
                 return null;

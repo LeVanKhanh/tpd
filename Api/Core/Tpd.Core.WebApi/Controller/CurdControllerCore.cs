@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
 using Tpd.Core.Domain.HandlerCore;
@@ -20,32 +21,32 @@ namespace Tpd.Core.WebApi.Controller
             DomainMediator = domainMediator;
         }
 
-        [HttpPut]
+        [HttpPut, Authorize]
         public async Task Put(TModelCreate model)
         {
             var resut = await DomainMediator.Create(model);
         }
 
-        [HttpPost]
+        [HttpPost, Authorize]
         public async Task Post(TModelUpdate model)
         {
             var resut = await DomainMediator.Update(model);
         }
 
-        [HttpDelete]
+        [HttpDelete, Authorize]
         public async Task Remove(Guid id)
         {
             var resut = await DomainMediator.Remove(id);
         }
 
-        [HttpGet("id")]
+        [HttpGet("id"), Authorize]
         public async Task<TGetItemResponse> GetItem(Guid id)
         {
             var result = await DomainMediator.GetItem(id);
             return result;
         }
 
-        [HttpPost("GetItems")]
+        [HttpPost("GetItems"), Authorize]
         public async Task<IResultCore<PagedResultCore<TGetItemsResponse>>> GetItems([FromBody]TQuery query)
         {
             var result = await DomainMediator.GetItems(query);

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Tpd.Core.Data;
+using Tpd.Core.Domain.FluentValidationCore;
 using Tpd.Core.Domain.RequestCore;
 using Tpd.Core.Domain.ResultCore;
 
@@ -12,9 +13,11 @@ namespace Tpd.Core.Domain.HandlerCore
         where TRequest : IRequestCore<TResponse>
     {
         protected readonly DatabaseContextCore Data;
-        public HandlerCore(DatabaseContextCore db)
+        protected readonly IValidationService ValidationService;
+        public HandlerCore(DatabaseContextCore db, IValidationService validationService)
         {
             Data = db;
+            ValidationService = validationService;
         }
 
         public async Task<IResultCore<TResponse>> Handle(TRequest request, CancellationToken cancellationToken = default)

@@ -1,5 +1,5 @@
 ﻿using Tpd.Core.Domain.RequestCore.QueryCore;
-using Tpd.Language.Domain.TranslationDomain.Model;
+using Tpd.Language.Domain.TranslationDomain.Result;
 
 namespace Tpd.Language.Domain.TranslationDomain.Request
 {

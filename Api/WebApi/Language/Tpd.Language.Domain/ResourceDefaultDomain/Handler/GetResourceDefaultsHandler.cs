@@ -3,6 +3,7 @@ using AutoMapper.QueryableExtensions;
 using System.Linq;
 using System.Threading.Tasks;
 using Tpd.Core.Data;
+using Tpd.Core.Domain.FluentValidationCore;
 using Tpd.Language.Data;
 using Tpd.Language.Domain.HandlerBase.QueryHandlerBase;
 using Tpd.Language.Domain.ResourceDefaultDomain.Model;
@@ -13,7 +14,8 @@ namespace Tpd.Language.Domain.ResourceDefaultDomain.Handler
     public class GetResourceDefaultsHandler : QueryListHandlerBase<GetResourceDefaultsQuery, ResourceDefaultModel>
     {
         private readonly IMapper _mapper;
-        public GetResourceDefaultsHandler(DatabaseContext data, IMapper mapper) : base(data)
+        public GetResourceDefaultsHandler(DatabaseContext data, IValidationService validationService, IMapper mapper)
+            : base(data, validationService)
         {
             _mapper = mapper;
         }

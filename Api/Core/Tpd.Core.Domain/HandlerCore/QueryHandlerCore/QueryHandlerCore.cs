@@ -1,4 +1,5 @@
 ﻿using Tpd.Core.Data;
+using Tpd.Core.Domain.FluentValidationCore;
 using Tpd.Core.Domain.RequestCore;
 
 namespace Tpd.Core.Domain.HandlerCore.QueryHandlerCore
@@ -7,8 +8,8 @@ namespace Tpd.Core.Domain.HandlerCore.QueryHandlerCore
         where TQuery : IRequestCore<TResponse>
         where TResponse : new()
     {
-        public QueryHandlerCore(DatabaseContextCore data)
-           : base(data)
+        public QueryHandlerCore(DatabaseContextCore data, IValidationService validationService)
+           : base(data, validationService)
         {
         }
     }

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Tpd.Core.Data;
+using Tpd.Core.Domain.FluentValidationCore;
 using Tpd.Core.Domain.HandlerCore.QueryHandlerCore;
 using Tpd.Example.Data.Read;
 
@@ -10,7 +11,7 @@ namespace Tpd.Example.Domain.HandlerBase.QueryHandlerBase
         where TResponse : new()
     {
         protected new readonly DatabaseReadContext Data;
-        public QueryItemHandlerBase(DatabaseReadContext data, IMapper mapper) : base(data, mapper)
+        public QueryItemHandlerBase(DatabaseReadContext data, IValidationService validationService, IMapper mapper) : base(data, validationService, mapper)
         {
             Data = data;
         }

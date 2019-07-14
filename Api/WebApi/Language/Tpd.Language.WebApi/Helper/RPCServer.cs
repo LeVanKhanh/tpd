@@ -6,8 +6,8 @@ using RabbitMQ.Client.Events;
 using System;
 using System.Text;
 using Tpd.Core.Domain.ResultCore;
-using Tpd.Language.Domain.TranslationDomain.Model;
 using Tpd.Language.Domain.TranslationDomain.Request;
+using Tpd.Language.Domain.TranslationDomain.Result;
 
 namespace Tpd.Language.WebApi.Helper
 {

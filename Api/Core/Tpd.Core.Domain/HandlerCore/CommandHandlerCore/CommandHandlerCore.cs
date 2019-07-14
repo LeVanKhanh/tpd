@@ -2,6 +2,7 @@
 using System;
 using System.Threading.Tasks;
 using Tpd.Core.Data;
+using Tpd.Core.Domain.FluentValidationCore;
 using Tpd.Core.Domain.RequestCore.CommandCore;
 using Tpd.Core.Domain.ResultCore;
 
@@ -10,8 +11,8 @@ namespace Tpd.Core.Domain.HandlerCore.CommandHandlerCore
     public abstract class CommandHandlerCore<TCommand> : HandlerCore<TCommand, int>
         where TCommand : ICommandCore
     {
-        public CommandHandlerCore(DatabaseContextCore db)
-            : base(db)
+        public CommandHandlerCore(DatabaseContextCore db, IValidationService validationService)
+            : base(db, validationService)
         {
 
         }

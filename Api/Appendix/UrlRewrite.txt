@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <location path="." inheritInChildApplications="false">
+    <system.webServer>
+	   <handlers>
+        <add name="aspNetCore" path="*" verb="*" modules="AspNetCoreModuleV2" resourceType="Unspecified" />
+      </handlers>
+      <!-- <aspNetCore processPath="dotnet" arguments=".\Tmp.dll" stdoutLogEnabled="false" stdoutLogFile=".\logs\stdout" hostingModel="InProcess" /> -->
+    </system.webServer>
+  </location>
+</configuration>
+<!--ProjectGuid: a7851591-b0b5-4234-be07-6a2b679ea1f9-->

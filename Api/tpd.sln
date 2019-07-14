@@ -20,6 +20,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Appendix", "Appendix", "{B2FFDC7A-4A26-4630-A1BB-307FC35D4A84}"
 	ProjectSection(SolutionItems) = preProject
 		Appendix\EFCommand.txt = Appendix\EFCommand.txt
+		Appendix\UrlRewrite.txt = Appendix\UrlRewrite.txt
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tpd.Example.Domain", "Example\Tpd.Example.Domain\Tpd.Example.Domain.csproj", "{6D1D8C1D-739A-452D-B26C-A26D028C03E1}"
@@ -40,11 +41,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tpd.Gateway", "WebApi\Gatew
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Language", "Language", "{7B441810-61CE-4DBD-AB65-A85AD0FAEFC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tpd.Language.Data", "WebApi\Language\Tpd.Language.Data\Tpd.Language.Data.csproj", "{698F3DB3-7D18-44DE-B845-92A9E27FED19}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tpd.Language.Data", "WebApi\Language\Tpd.Language.Data\Tpd.Language.Data.csproj", "{698F3DB3-7D18-44DE-B845-92A9E27FED19}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tpd.Language.Domain", "WebApi\Language\Tpd.Language.Domain\Tpd.Language.Domain.csproj", "{2AE21DE6-AB0D-40FD-B420-DBE924AFC97A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tpd.Language.Domain", "WebApi\Language\Tpd.Language.Domain\Tpd.Language.Domain.csproj", "{2AE21DE6-AB0D-40FD-B420-DBE924AFC97A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tpd.Language.WebApi", "WebApi\Language\Tpd.Language.WebApi\Tpd.Language.WebApi.csproj", "{34AA2382-50A6-45C2-81C2-AA2C0C80A237}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tpd.Language.WebApi", "WebApi\Language\Tpd.Language.WebApi\Tpd.Language.WebApi.csproj", "{34AA2382-50A6-45C2-81C2-AA2C0C80A237}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

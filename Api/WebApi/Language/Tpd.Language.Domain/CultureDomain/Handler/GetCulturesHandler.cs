@@ -3,6 +3,7 @@ using AutoMapper.QueryableExtensions;
 using System.Linq;
 using System.Threading.Tasks;
 using Tpd.Core.Data;
+using Tpd.Core.Domain.FluentValidationCore;
 using Tpd.Language.Data;
 using Tpd.Language.Domain.CultureDomain.Model;
 using Tpd.Language.Domain.CultureDomain.Request;
@@ -13,7 +14,8 @@ namespace Tpd.Language.Domain.CultureDomain.Handler
     public class GetCulturesHandler : QueryListHandlerBase<GetCulturesQuery, CultureModel>
     {
         private readonly IMapper _mapper;
-        public GetCulturesHandler(DatabaseContext data, IMapper mapper) : base(data)
+        public GetCulturesHandler(DatabaseContext data, IValidationService validationService, IMapper mapper)
+            : base(data, validationService)
         {
             _mapper = mapper;
         }

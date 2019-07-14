@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
 using Tpd.Core.Data;
+using Tpd.Core.Domain.FluentValidationCore;
 using Tpd.Example.Data.Read;
 using Tpd.Example.Data.Read.Entities;
 using Tpd.Example.Domain.HandlerBase.QueryHandlerBase;
@@ -16,7 +17,8 @@ namespace Tpd.Example.Domain.MasterDataCategoryDomain.Handler
     {
         private DbSet<MasterDataCategory> Entities;
         private readonly IMapper _mapper;
-        public MasterDataCategoryGetItemsHandler(DatabaseReadContext data, IMapper mapper) : base(data)
+        public MasterDataCategoryGetItemsHandler(DatabaseReadContext data, IValidationService validationService, IMapper mapper)
+            : base(data, validationService)
         {
             Entities = data.Set<MasterDataCategory>();
             _mapper = mapper;

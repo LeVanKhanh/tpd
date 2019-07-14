@@ -36,7 +36,7 @@ namespace Tpd.Language.WebApi
                 Assembly.GetAssembly(typeof(DomainMediatorBase)),
                 Assembly.GetAssembly(typeof(Core.Domain.RequestCore.RequestCore)));
 
-            services.AddSwagger(Configuration);
+            services.AddMySwagger(Configuration);
             services.AddDomain();
         }
 
@@ -50,7 +50,7 @@ namespace Tpd.Language.WebApi
             {
                 app.UseHsts();
             }
-            app.UseSwagger();
+            app.UseMySwagger();
             app.UseHttpsRedirection();
             app.UseMvc();
             app.AddRPCServer(mediator);

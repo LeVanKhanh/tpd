@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
 using Tpd.Core.Data;
+using Tpd.Core.Domain.FluentValidationCore;
 using Tpd.Core.Domain.RequestCore.QueryCore;
 
 namespace Tpd.Core.Domain.HandlerCore.QueryHandlerCore
@@ -14,7 +15,7 @@ namespace Tpd.Core.Domain.HandlerCore.QueryHandlerCore
     {
         protected DbSet<TEntity> Entities;
         protected IMapper Mapper;
-        public QueryItemHandlerCore(DatabaseContextCore data, IMapper mapper) : base(data)
+        public QueryItemHandlerCore(DatabaseContextCore data, IValidationService validationService, IMapper mapper) : base(data, validationService)
         {
             Entities = data.Set<TEntity>();
             Mapper = mapper;

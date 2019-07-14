@@ -1,4 +1,4 @@
-﻿namespace Tpd.Language.Domain.TranslationDomain.Model
+﻿namespace Tpd.Language.Domain.TranslationDomain.Result
 {
     public class ResoureEntryModel
     {

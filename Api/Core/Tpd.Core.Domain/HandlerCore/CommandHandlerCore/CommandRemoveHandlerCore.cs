@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using Tpd.Core.Data;
+using Tpd.Core.Domain.FluentValidationCore;
 using Tpd.Core.Domain.RequestCore.CommandCore;
 
 namespace Tpd.Core.Domain.HandlerCore.CommandHandlerCore
@@ -9,8 +10,8 @@ namespace Tpd.Core.Domain.HandlerCore.CommandHandlerCore
         where TEntity : EntityCore
     {
         protected DbSet<TEntity> Entity;
-        public CommandRemoveHandlerCore(DatabaseContextCore db)
-            : base(db)
+        public CommandRemoveHandlerCore(DatabaseContextCore db, IValidationService validationService)
+            : base(db, validationService)
         {
             Entity = Data.Set<TEntity>();
         }

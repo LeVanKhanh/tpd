@@ -3,19 +3,16 @@ using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System.Reflection;
 using System.Text;
-using Tpd.Core.Domain.HandlerCore;
+using Tpd.Core.WebApi.StartupConfig;
 using Tpd.Example.Data.Read;
 using Tpd.Example.Data.Write;
 using Tpd.Example.Domain;
 using Tpd.Example.Domain.HandlerBase;
-using Tpd.Example.WebApi.StartupConfig;
-using Tpd.MultiLanguage;
 
 namespace Tpd.Example.WebApi
 {
@@ -30,6 +27,8 @@ namespace Tpd.Example.WebApi
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvcOptions();
+
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                .AddJwtBearer(options =>
                {
@@ -46,8 +45,6 @@ namespace Tpd.Example.WebApi
                    };
                });
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-
             services.AddAutoMapper(Assembly.GetExecutingAssembly(),
                 Assembly.GetAssembly(typeof(DomainMediatorBase)),
                 Assembly.GetAssembly(typeof(Core.Domain.RequestCore.RequestCore)));
@@ -56,13 +53,14 @@ namespace Tpd.Example.WebApi
                 Assembly.GetAssembly(typeof(DomainMediatorBase)),
                 Assembly.GetAssembly(typeof(Core.Domain.RequestCore.RequestCore)));
 
-            services.AddSwagger(Configuration);
+            services.AddMySwagger(Configuration);
 
             services.AddDataWriteSql(Configuration, "DBConnectionWrite");
             services.AddDataReadSql(Configuration, "DBConnectionRead");
 
             services.AddDomain();
             //services.AddMultilanguage();
+            services.AddMyElmah();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -75,7 +73,7 @@ namespace Tpd.Example.WebApi
             {
                 app.UseHsts();
             }
-            app.UseSwagger();
+            app.UseMySwagger();
             app.UseAuthentication();
             app.UseHttpsRedirection();
             app.UseMvc();

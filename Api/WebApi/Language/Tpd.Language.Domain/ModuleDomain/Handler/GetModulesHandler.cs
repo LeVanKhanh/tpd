@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using Tpd.Core.Data;
+using Tpd.Core.Domain.FluentValidationCore;
 using Tpd.Language.Data;
 using Tpd.Language.Domain.HandlerBase.QueryHandlerBase;
 using Tpd.Language.Domain.ModuleDomain.Request;
@@ -10,7 +11,8 @@ namespace Tpd.Language.Domain.ModuleDomain.Handler
 {
     public class GetModulesHandler : QueryListHandlerBase<GetModulesQuery, GetModulesResult>
     {
-        public GetModulesHandler(DatabaseContext data) : base(data)
+        public GetModulesHandler(DatabaseContext data, IValidationService validationService)
+            : base(data, validationService)
         {
 
         }

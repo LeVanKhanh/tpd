@@ -3,6 +3,7 @@ using AutoMapper.QueryableExtensions;
 using System.Linq;
 using System.Threading.Tasks;
 using Tpd.Core.Data;
+using Tpd.Core.Domain.FluentValidationCore;
 using Tpd.Language.Data;
 using Tpd.Language.Domain.ApplicationDomain.Model;
 using Tpd.Language.Domain.ApplicationDomain.Request;
@@ -13,7 +14,8 @@ namespace Tpd.Language.Domain.ApplicationDomain.Handler
     public class GetApplicationsHandler : QueryListHandlerBase<GetApplicationsQuery, ApplicationModel>
     {
         private readonly IMapper _mapper;
-        public GetApplicationsHandler(DatabaseContext data, IMapper mapper) : base(data)
+        public GetApplicationsHandler(DatabaseContext data, IValidationService validationService, IMapper mapper) 
+            : base(data, validationService)
         {
             _mapper = mapper;
         }

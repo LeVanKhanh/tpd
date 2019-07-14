@@ -11,7 +11,7 @@ namespace Tpd.Core.WebApi.StartupConfig
 {
     public static class SwaggerConfiguartion
     {
-        public static void AddSwagger(this IServiceCollection services, IConfiguration configuration)
+        public static void AddMySwagger(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddSwaggerGen(c =>
             {
@@ -50,7 +50,7 @@ namespace Tpd.Core.WebApi.StartupConfig
             });
         }
 
-        public static void UseSwagger(this IApplicationBuilder app)
+        public static void UseMySwagger(this IApplicationBuilder app)
         {
             SwaggerBuilderExtensions.UseSwagger(app);
             app.UseSwaggerUI(c =>
