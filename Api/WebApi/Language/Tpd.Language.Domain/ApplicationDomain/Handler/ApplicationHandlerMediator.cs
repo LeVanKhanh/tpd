@@ -19,22 +19,22 @@ namespace Tpd.Language.Domain.ApplicationDomain.Handler
 
         }
 
-        public async Task<int> Create(ApplicationModel model)
+        public async Task<IResultCore<int>> Create(ApplicationModel model)
         {
             return await Create<Application, ApplicationModel>(model);
         }
 
-        public async Task<int> Update(ApplicationModel model)
+        public async Task<IResultCore<int>> Update(ApplicationModel model)
         {
             return await Update<Application, ApplicationModel>(model);
         }
 
-        public async Task<int> Remove(Guid id)
+        public async Task<IResultCore<int>> Remove(Guid id)
         {
             return await Remove<Application>(id);
         }
 
-        public async Task<ApplicationModel> GetItem(Guid id)
+        public async Task<IResultCore<ApplicationModel>> GetItem(Guid id)
         {
             return await GetItem<Application, ApplicationModel>(id);
         }

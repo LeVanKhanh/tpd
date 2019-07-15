@@ -1,7 +1,5 @@
 ﻿using MediatR;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using Tpd.Core.Domain.HandlerCore;
 using Tpd.Core.Domain.ResultCore;
@@ -21,22 +19,22 @@ namespace Tpd.Language.Domain.CultureDomain.Handler
 
         }
 
-        public async Task<int> Create(CultureModel model)
+        public async Task<IResultCore<int>> Create(CultureModel model)
         {
             return await Create<Culture, CultureModel>(model);
         }
 
-        public async Task<int> Update(CultureModel model)
+        public async Task<IResultCore<int>> Update(CultureModel model)
         {
             return await Update<Culture, CultureModel>(model);
         }
 
-        public async Task<int> Remove(Guid id)
+        public async Task<IResultCore<int>> Remove(Guid id)
         {
             return await Remove<Culture>(id);
         }
 
-        public async Task<CultureModel> GetItem(Guid id)
+        public async Task<IResultCore<CultureModel>> GetItem(Guid id)
         {
             return await GetItem<Culture, CultureModel>(id);
         }

@@ -22,7 +22,7 @@ namespace Tpd.Core.Domain.HandlerCore
             _serviceProvider = serviceProvider;
         }
 
-        protected async Task<int> Create<THandler, TEntity, TModel>(TModel model)
+        protected async Task<IResultCore<int>> Create<THandler, TEntity, TModel>(TModel model)
             where TEntity : EntityCore
             where TModel : IEntityModel
             where THandler : CommandCreateHandlerCore<TEntity, TModel>
@@ -31,10 +31,10 @@ namespace Tpd.Core.Domain.HandlerCore
             var handler = _serviceProvider.GetService<THandler>();
             command.Model = model;
             var result = await handler.Handle(command);
-            return result.Result;
+            return result;
         }
 
-        protected async Task<int> Update<THandler, TEntity, TModel>(TModel model)
+        protected async Task<IResultCore<int>> Update<THandler, TEntity, TModel>(TModel model)
             where TEntity : EntityCore
             where TModel : IEntityModel
             where THandler : CommandUpdateHandlerCore<TEntity, TModel>
@@ -43,10 +43,10 @@ namespace Tpd.Core.Domain.HandlerCore
             var handler = _serviceProvider.GetService<THandler>();
             command.Model = model;
             var result = await handler.Handle(command);
-            return result.Result;
+            return result;
         }
 
-        protected async Task<int> Remove<THandler, TEntity>(Guid id)
+        protected async Task<IResultCore<int>> Remove<THandler, TEntity>(Guid id)
             where TEntity : EntityCore
             where THandler : CommandRemoveHandlerCore<TEntity>
         {
@@ -54,10 +54,10 @@ namespace Tpd.Core.Domain.HandlerCore
             var handler = _serviceProvider.GetService<THandler>();
             command.Id = id;
             var result = await handler.Handle(command);
-            return result.Result;
+            return result;
         }
 
-        protected async Task<TResponse> GetItem<THandler, TEntity, TResponse>(Guid id)
+        protected async Task<IResultCore<TResponse>> GetItem<THandler, TEntity, TResponse>(Guid id)
             where THandler : QueryItemHandlerCore<TEntity, TResponse>
             where TEntity : EntityCore
             where TResponse : new()
@@ -66,7 +66,7 @@ namespace Tpd.Core.Domain.HandlerCore
             var handler = _serviceProvider.GetService<THandler>();
             query.Id = id;
             var result = await handler.Handle(query);
-            return result.Result;
+            return result;
         }
 
         protected async Task<PagedResultCore<TResponse>> GetItems<THandler, TEntity, TResponse>()

@@ -18,27 +18,27 @@ namespace Tpd.Language.Domain.HandlerBase
         {
         }
 
-        protected async Task<int> Create<TEntity, TModel>(TModel model)
+        protected async Task<IResultCore<int>> Create<TEntity, TModel>(TModel model)
             where TEntity : EntityCore
             where TModel : IEntityModel
         {
             return await Create<CommandCreateHandlerBase<TEntity, TModel>, TEntity, TModel>(model);
         }
 
-        protected async Task<int> Update<TEntity, TModel>(TModel model)
+        protected async Task<IResultCore<int>> Update<TEntity, TModel>(TModel model)
             where TEntity : EntityCore
             where TModel : IEntityModel
         {
             return await Update<CommandUpdateHandlerBase<TEntity, TModel>, TEntity, TModel>(model);
         }
 
-        protected async Task<int> Remove<TEntity>(Guid id)
+        protected async Task<IResultCore<int>> Remove<TEntity>(Guid id)
             where TEntity : EntityCore
         {
             return await Remove<CommandRemoveHandlerBase<TEntity>, TEntity>(id);
         }
 
-        protected async Task<TResponse> GetItem<TEntity, TResponse>(Guid id)
+        protected async Task<IResultCore<TResponse>> GetItem<TEntity, TResponse>(Guid id)
             where TEntity : EntityCore
             where TResponse : new()
         {

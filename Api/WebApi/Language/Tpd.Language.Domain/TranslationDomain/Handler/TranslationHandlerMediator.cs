@@ -20,22 +20,22 @@ namespace Tpd.Language.Domain.TranslationDomain.Handler
 
         }
 
-        public async Task<int> Create(TranslationModel model)
+        public async Task<IResultCore<int>> Create(TranslationModel model)
         {
             return await Create<Translation, TranslationModel>(model);
         }
 
-        public async Task<int> Update(TranslationModel model)
+        public async Task<IResultCore<int>> Update(TranslationModel model)
         {
             return await Update<Translation, TranslationModel>(model);
         }
 
-        public async Task<int> Remove(Guid id)
+        public async Task<IResultCore<int>> Remove(Guid id)
         {
             return await Remove<Translation>(id);
         }
 
-        public async Task<TranslationModel> GetItem(Guid id)
+        public async Task<IResultCore<TranslationModel>> GetItem(Guid id)
         {
             return await GetItem<Translation, TranslationModel>(id);
         }

@@ -19,22 +19,22 @@ namespace Tpd.Language.Domain.ResourceDefaultDomain.Handler
 
         }
 
-        public async Task<int> Create(ResourceDefaultModel model)
+        public async Task<IResultCore<int>> Create(ResourceDefaultModel model)
         {
             return await Create<ResourceDefault, ResourceDefaultModel>(model);
         }
 
-        public async Task<int> Update(ResourceDefaultModel model)
+        public async Task<IResultCore<int>> Update(ResourceDefaultModel model)
         {
             return await Update<ResourceDefault, ResourceDefaultModel>(model);
         }
 
-        public async Task<int> Remove(Guid id)
+        public async Task<IResultCore<int>> Remove(Guid id)
         {
             return await Remove<ResourceDefault>(id);
         }
 
-        public async Task<ResourceDefaultModel> GetItem(Guid id)
+        public async Task<IResultCore<ResourceDefaultModel>> GetItem(Guid id)
         {
             return await GetItem<ResourceDefault, ResourceDefaultModel>(id);
         }

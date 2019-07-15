@@ -18,7 +18,7 @@ namespace Tpd.Core.WebApi.StartupConfig
             services.AddElmah<XmlFileErrorLog>(options =>
             {
                 options.LogPath = path;// The path to write file
-                options.Path = @"errors";// the route name
+                options.Path = @"Elmah";// the route name
             });
         }
     }

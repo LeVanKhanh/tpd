@@ -13,10 +13,10 @@ namespace Tpd.Core.Domain.HandlerCore
         where TQuery: IQueryListCore<TGetItemsResponse>
     {
         IMediator Mediator { get; set; }
-        Task<int> Create(TModelCreate model);
-        Task<int> Update(TModelUpdate model);
-        Task<int> Remove(Guid id);
-        Task<TGetItemResponse> GetItem(Guid id);
+        Task<IResultCore<int>> Create(TModelCreate model);
+        Task<IResultCore<int>> Update(TModelUpdate model);
+        Task<IResultCore<int>> Remove(Guid id);
+        Task<IResultCore<TGetItemResponse>> GetItem(Guid id);
         Task<IResultCore<PagedResultCore<TGetItemsResponse>>> GetItems(TQuery query);
     }
 }

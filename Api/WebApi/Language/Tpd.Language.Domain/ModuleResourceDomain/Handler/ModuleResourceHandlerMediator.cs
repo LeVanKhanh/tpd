@@ -20,22 +20,22 @@ namespace Tpd.Language.Domain.ModuleResourceDomain.Handler
 
         }
 
-        public async Task<int> Create(ModuleResourceModel model)
+        public async Task<IResultCore<int>> Create(ModuleResourceModel model)
         {
             return await Create<ModuleResource, ModuleResourceModel>(model);
         }
 
-        public async Task<int> Update(ModuleResourceModel model)
+        public async Task<IResultCore<int>> Update(ModuleResourceModel model)
         {
             return await Update<ModuleResource, ModuleResourceModel>(model);
         }
 
-        public async Task<int> Remove(Guid id)
+        public async Task<IResultCore<int>> Remove(Guid id)
         {
             return await Remove<ModuleResource>(id);
         }
 
-        public async Task<ModuleResourceModel> GetItem(Guid id)
+        public async Task<IResultCore<ModuleResourceModel>> GetItem(Guid id)
         {
             return await GetItem<ModuleResource, ModuleResourceModel>(id);
         }

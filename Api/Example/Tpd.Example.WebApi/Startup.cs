@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ElmahCore.Mvc;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -76,6 +77,8 @@ namespace Tpd.Example.WebApi
             app.UseMySwagger();
             app.UseAuthentication();
             app.UseHttpsRedirection();
+            app.UseElmah();
+            app.UseGlobalException();
             app.UseMvc();
             //app.UseMultilanguage();
         }

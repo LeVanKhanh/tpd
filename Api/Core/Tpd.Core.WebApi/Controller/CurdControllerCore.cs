@@ -1,11 +1,9 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
 using Tpd.Core.Domain.HandlerCore;
 using Tpd.Core.Domain.ModelCore;
 using Tpd.Core.Domain.RequestCore.QueryCore;
-using Tpd.Core.Domain.ResultCore;
 
 namespace Tpd.Core.WebApi.Controller
 {
@@ -22,35 +20,38 @@ namespace Tpd.Core.WebApi.Controller
         }
 
         [HttpPut]
-        public async Task Put(TModelCreate model)
+        public async Task<ActionResult> Put(TModelCreate model)
         {
-            var resut = await DomainMediator.Create(model);
+            var result = await DomainMediator.Create(model);
+            return Ok(result);
         }
 
         [HttpPost]
-        public async Task Post(TModelUpdate model)
+        public async Task<ActionResult> Post(TModelUpdate model)
         {
-            var resut = await DomainMediator.Update(model);
+            var result = await DomainMediator.Update(model);
+            return Ok(result);
         }
 
         [HttpDelete]
-        public async Task Remove(Guid id)
+        public async Task<ActionResult> Remove(Guid id)
         {
             var resut = await DomainMediator.Remove(id);
+            return Ok(resut);
         }
 
         [HttpGet("id")]
-        public async Task<TGetItemResponse> GetItem(Guid id)
+        public async Task<ActionResult> GetItem(Guid id)
         {
             var result = await DomainMediator.GetItem(id);
-            return result;
+            return Ok(result);
         }
 
         [HttpPost("GetItems")]
-        public async Task<IResultCore<PagedResultCore<TGetItemsResponse>>> GetItems([FromBody]TQuery query)
+        public async Task<ActionResult> GetItems([FromBody]TQuery query)
         {
             var result = await DomainMediator.GetItems(query);
-            return result;
+            return Ok(result);
         }
     }
 }

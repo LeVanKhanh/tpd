@@ -20,22 +20,22 @@ namespace Tpd.Example.Domain.MasterDataCategoryDomain.Handler
 
         }
 
-        public async Task<int> Create(MasterDataCategoryModel model)
+        public async Task<IResultCore<int>> Create(MasterDataCategoryModel model)
         {
             return await Create<DataWriteEntities.MasterDataCategory, MasterDataCategoryModel>(model);
         }
 
-        public async Task<int> Update(MasterDataCategoryModel model)
+        public async Task<IResultCore<int>> Update(MasterDataCategoryModel model)
         {
             return await Update<DataWriteEntities.MasterDataCategory, MasterDataCategoryModel>(model);
         }
 
-        public async Task<int> Remove(Guid id)
+        public async Task<IResultCore<int>> Remove(Guid id)
         {
             return await Remove<DataWriteEntities.MasterDataCategory>(id);
         }
 
-        public async Task<MasterDataCategoryModel> GetItem(Guid id)
+        public async Task<IResultCore<MasterDataCategoryModel>> GetItem(Guid id)
         {
             return await GetItem<DataReadEntities.MasterDataCategory, MasterDataCategoryModel>(id);
         }
