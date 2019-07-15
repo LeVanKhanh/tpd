@@ -1,4 +1,5 @@
-﻿using Tpd.Core.Domain.FluentValidationCore;
+﻿using MediatR;
+using Tpd.Core.Domain.FluentValidationCore;
 using Tpd.Core.Domain.HandlerCore.CommandHandlerCore;
 using Tpd.Core.Domain.RequestCore.CommandCore;
 using Tpd.Example.Data.Write;
@@ -9,8 +10,8 @@ namespace Tpd.Example.Domain.HandlerBase.CommandHandlerBase
         where TCommand : ICommandCore
     {
         protected new DatabaseWriteContext Data { get; set; }
-        public CommandHandlerBase(DatabaseWriteContext data, IValidationService validationService)
-          : base(data, validationService)
+        public CommandHandlerBase(DatabaseWriteContext data, IValidationService validationService, IMediator mediator)
+          : base(data, validationService, mediator)
         {
             Data = data;
         }

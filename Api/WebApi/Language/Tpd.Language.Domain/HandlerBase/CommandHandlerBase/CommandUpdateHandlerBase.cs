@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using MediatR;
 using Tpd.Core.Data;
 using Tpd.Core.Domain.FluentValidationCore;
 using Tpd.Core.Domain.HandlerCore.CommandHandlerCore;
@@ -12,8 +13,8 @@ namespace Tpd.Language.Domain.HandlerBase.CommandHandlerBase
         where TMolde : IEntityModel
     {
         protected new DatabaseContext Data { get; set; }
-        public CommandUpdateHandlerBase(DatabaseContext data, IValidationService validationService, IMapper mapper)
-          : base(data, validationService, mapper)
+        public CommandUpdateHandlerBase(DatabaseContext data, IValidationService validationService, IMediator mediator, IMapper mapper)
+          : base(data, validationService, mediator, mapper)
         {
             Data = data;
         }

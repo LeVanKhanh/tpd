@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using MediatR;
+using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using Tpd.Core.Data;
 using Tpd.Core.Domain.FluentValidationCore;
@@ -10,8 +11,8 @@ namespace Tpd.Core.Domain.HandlerCore.CommandHandlerCore
         where TEntity : EntityCore
     {
         protected DbSet<TEntity> Entity;
-        public CommandRemoveHandlerCore(DatabaseContextCore db, IValidationService validationService)
-            : base(db, validationService)
+        public CommandRemoveHandlerCore(DatabaseContextCore db, IValidationService validationService, IMediator mediator)
+            : base(db, validationService, mediator)
         {
             Entity = Data.Set<TEntity>();
         }

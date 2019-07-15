@@ -1,10 +1,12 @@
 ﻿using MediatR;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Tpd.Core.Domain.HandlerCore;
 using Tpd.Core.Domain.ResultCore;
 using Tpd.Example.Domain.HandlerBase;
 using Tpd.Example.Domain.MasterDataCategoryDomain.Model;
+using Tpd.Example.Domain.MasterDataCategoryDomain.Notification;
 using Tpd.Example.Domain.MasterDataCategoryDomain.Request;
 using DataReadEntities = Tpd.Example.Data.Read.Entities;
 using DataWriteEntities = Tpd.Example.Data.Write.Entities;
@@ -22,6 +24,14 @@ namespace Tpd.Example.Domain.MasterDataCategoryDomain.Handler
 
         public async Task<int> Create(MasterDataCategoryModel model)
         {
+            model.Notifications = new List<INotification>
+            {
+                new MasterDataCategoryCreatedNotifcation{
+                    Id = model.Id,
+                    Description = model.Description,
+                    Name =model. Name
+                }
+            };
             return await Create<DataWriteEntities.MasterDataCategory, MasterDataCategoryModel>(model);
         }
 

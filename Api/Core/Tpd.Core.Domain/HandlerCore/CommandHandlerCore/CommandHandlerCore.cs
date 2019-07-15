@@ -1,5 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using MediatR;
+using Microsoft.EntityFrameworkCore;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Tpd.Core.Data;
 using Tpd.Core.Domain.FluentValidationCore;
@@ -11,7 +13,8 @@ namespace Tpd.Core.Domain.HandlerCore.CommandHandlerCore
     public abstract class CommandHandlerCore<TCommand> : HandlerCore<TCommand, int>
         where TCommand : ICommandCore
     {
-        public CommandHandlerCore(DatabaseContextCore db, IValidationService validationService)
+        private readonly IMediator _mediator;
+        public CommandHandlerCore(DatabaseContextCore db, IValidationService validationService, IMediator mediator)
             : base(db, validationService)
         {
 
@@ -22,6 +25,7 @@ namespace Tpd.Core.Domain.HandlerCore.CommandHandlerCore
             if (await TryBuildCommand(command, Context))
             {
                 int result = Execute();
+                SendNotification(command);
                 return new ResultCore<int>
                 {
                     Success = true,
@@ -35,6 +39,17 @@ namespace Tpd.Core.Domain.HandlerCore.CommandHandlerCore
                     Success = true,
                     ErrorMessages = command.Messages
                 };
+            }
+        }
+
+        protected virtual void SendNotification(TCommand command)
+        {
+            if (command.Notifications.Any())
+            {
+                foreach (var notification in command.Notifications)
+                {
+                    _mediator.Publish(notification);
+                }
             }
         }
 

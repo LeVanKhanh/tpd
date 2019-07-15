@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using NetCore.AutoRegisterDi;
 using System;
@@ -18,7 +19,6 @@ namespace Tpd.Core.Domain
             services.AddTransient(typeof(ICommandRemoveCore), typeof(CommandRemoveCore));
             services.AddTransient(typeof(IQueryItemCore<>), typeof(QueryItemCore<>));
             services.AddTransient<IValidationService, FluentValidationService>();
-            //services.AddTransient<IValidatorFactory, FluentValidatorFactory>();
 
             foreach (var command in commands)
             {
@@ -31,6 +31,10 @@ namespace Tpd.Core.Domain
 
             services.RegisterAssemblyPublicNonGenericClasses(Assembly.GetAssembly(domainType))
                   .Where(c => c.Name.EndsWith("Validator"))
+                  .AsPublicImplementedInterfaces();
+
+            services.RegisterAssemblyPublicNonGenericClasses(Assembly.GetAssembly(domainType))
+                  .Where(c => c.Name.EndsWith("Notifcation"))
                   .AsPublicImplementedInterfaces();
         }
     }

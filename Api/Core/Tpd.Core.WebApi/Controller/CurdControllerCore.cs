@@ -21,32 +21,32 @@ namespace Tpd.Core.WebApi.Controller
             DomainMediator = domainMediator;
         }
 
-        [HttpPut, Authorize]
+        [HttpPut]
         public async Task Put(TModelCreate model)
         {
             var resut = await DomainMediator.Create(model);
         }
 
-        [HttpPost, Authorize]
+        [HttpPost]
         public async Task Post(TModelUpdate model)
         {
             var resut = await DomainMediator.Update(model);
         }
 
-        [HttpDelete, Authorize]
+        [HttpDelete]
         public async Task Remove(Guid id)
         {
             var resut = await DomainMediator.Remove(id);
         }
 
-        [HttpGet("id"), Authorize]
+        [HttpGet("id")]
         public async Task<TGetItemResponse> GetItem(Guid id)
         {
             var result = await DomainMediator.GetItem(id);
             return result;
         }
 
-        [HttpPost("GetItems"), Authorize]
+        [HttpPost("GetItems")]
         public async Task<IResultCore<PagedResultCore<TGetItemsResponse>>> GetItems([FromBody]TQuery query)
         {
             var result = await DomainMediator.GetItems(query);

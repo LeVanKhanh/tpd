@@ -1,9 +1,9 @@
 ﻿using MediatR;
 using System.Collections.Generic;
 
-namespace Tpd.Core.Domain.RequestCore.CommandCore
+namespace Tpd.Core.Domain.ModelCore
 {
-    public interface ICommandCore : IRequestCore<int>
+    public interface INotifiable
     {
         List<INotification> Notifications { get; set; }
     }

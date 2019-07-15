@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,8 +17,8 @@ namespace Tpd.Core.Domain.HandlerCore.CommandHandlerCore
     {
         protected readonly IMapper Mapper;
         protected DbSet<TEntity> Entity;
-        public CommandCreateHandlerCore(DatabaseContextCore db, IValidationService validationService, IMapper mapper)
-            : base(db, validationService)
+        public CommandCreateHandlerCore(DatabaseContextCore db, IValidationService validationService, IMediator mediator, IMapper mapper)
+            : base(db, validationService, mediator)
         {
             Entity = Data.Set<TEntity>();
             Mapper = mapper;
@@ -31,6 +32,11 @@ namespace Tpd.Core.Domain.HandlerCore.CommandHandlerCore
             if (validationResult.IsValid)
             {
                 Entity.AddWithContext(Context, entity);
+                if (command.Model is INotifiable)
+                {
+                    var notifyobject = (INotifiable)command.Model;
+                    command.Notifications.AddRange(notifyobject.Notifications);
+                }
             }
             else
             {

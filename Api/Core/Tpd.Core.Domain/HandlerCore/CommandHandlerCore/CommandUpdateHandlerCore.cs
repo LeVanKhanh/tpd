@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using Tpd.Core.Data;
@@ -17,8 +18,8 @@ namespace Tpd.Core.Domain.HandlerCore.CommandHandlerCore
         protected readonly IMapper Mapper;
         protected DbSet<TEntity> Entity;
 
-        public CommandUpdateHandlerCore(DatabaseContextCore data, IValidationService validationService, IMapper mapper)
-            : base(data, validationService)
+        public CommandUpdateHandlerCore(DatabaseContextCore data, IValidationService validationService, IMediator mediator, IMapper mapper)
+            : base(data, validationService, mediator)
         {
             Entity = Data.Set<TEntity>();
             Mapper = mapper;
