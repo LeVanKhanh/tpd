@@ -1,13 +1,12 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System;
 using System.Text;
-using Tpd.Core.Domain.ResultCore;
+using Tpd.Language.Domain.TranslationDomain.Handler;
 using Tpd.Language.Domain.TranslationDomain.Request;
-using Tpd.Language.Domain.TranslationDomain.Result;
 
 namespace Tpd.Language.WebApi.Helper
 {
@@ -16,9 +15,10 @@ namespace Tpd.Language.WebApi.Helper
         private const string QUEUE_NAME = "rpc_queue";
         private static IConnection connection;
         private static IModel channel;
-
-        public static void AddRPCServer(this IApplicationBuilder app, IMediator mediator)
+        private static GetTranslationsHandler handler;
+        public static void AddRPCServer(this IApplicationBuilder app)
         {
+            handler = app.ApplicationServices.GetService<GetTranslationsHandler>();
             var factory = new ConnectionFactory() { HostName = "localhost" };
             connection = factory.CreateConnection();
             channel = connection.CreateModel();
@@ -39,10 +39,9 @@ namespace Tpd.Language.WebApi.Helper
 
                 try
                 {
-
                     var message = Encoding.UTF8.GetString(body);
                     var query = JsonConvert.DeserializeObject<GetTranslationsQuery>(message);
-                    var handlerTask = mediator.Send<IResultCore<PagedResultCore<ResoureEntryModel>>>(query);
+                    var handlerTask = handler.Handle(query);
                     handlerTask.Wait();
                     var handlerResult = handlerTask.Result;
                     if (handlerResult != null && handlerResult.Success)

@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
+using ElmahCore.Mvc;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
@@ -10,6 +10,7 @@ using Tpd.Core.WebApi.StartupConfig;
 using Tpd.Language.Data;
 using Tpd.Language.Domain;
 using Tpd.Language.Domain.HandlerBase;
+using Tpd.Language.Domain.TranslationDomain.Handler;
 using Tpd.Language.WebApi.Helper;
 
 namespace Tpd.Language.WebApi
@@ -25,7 +26,8 @@ namespace Tpd.Language.WebApi
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvcOptions();
+
             services.AddDataSql(Configuration, "DBConnection");
 
             services.AddAutoMapper(Assembly.GetExecutingAssembly(),
@@ -38,9 +40,11 @@ namespace Tpd.Language.WebApi
 
             services.AddMySwagger(Configuration);
             services.AddDomain();
+            services.AddMyElmah();
+            services.AddScoped<GetTranslationsHandler>();
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IMediator mediator)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -52,8 +56,10 @@ namespace Tpd.Language.WebApi
             }
             app.UseMySwagger();
             app.UseHttpsRedirection();
+            app.UseElmah();
+            app.UseGlobalException();
             app.UseMvc();
-            app.AddRPCServer(mediator);
+            app.AddRPCServer();
         }
     }
 }

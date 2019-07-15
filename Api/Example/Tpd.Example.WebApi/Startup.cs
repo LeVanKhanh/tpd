@@ -14,6 +14,7 @@ using Tpd.Example.Data.Read;
 using Tpd.Example.Data.Write;
 using Tpd.Example.Domain;
 using Tpd.Example.Domain.HandlerBase;
+using Tpd.MultiLanguage;
 
 namespace Tpd.Example.WebApi
 {
@@ -60,7 +61,7 @@ namespace Tpd.Example.WebApi
             services.AddDataReadSql(Configuration, "DBConnectionRead");
 
             services.AddDomain();
-            //services.AddMultilanguage();
+            services.AddMultilanguage();
             services.AddMyElmah();
         }
 
@@ -80,7 +81,7 @@ namespace Tpd.Example.WebApi
             app.UseElmah();
             app.UseGlobalException();
             app.UseMvc();
-            //app.UseMultilanguage();
+            app.UseMultilanguage();
         }
     }
 }
