@@ -35,7 +35,7 @@ namespace Tpd.Core.Domain.HandlerCore.CommandHandlerCore
                 if (command.Model is INotifiable)
                 {
                     var notifyobject = (INotifiable)command.Model;
-                    command.Notifications.AddRange(notifyobject.Notifications);
+                    command.Notifications.Add(notifyobject.Notification);
                 }
             }
             else

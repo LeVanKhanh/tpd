@@ -17,7 +17,7 @@ namespace Tpd.Core.Domain.HandlerCore.CommandHandlerCore
         public CommandHandlerCore(DatabaseContextCore db, IValidationService validationService, IMediator mediator)
             : base(db, validationService)
         {
-
+            _mediator = mediator;
         }
 
         protected sealed override async Task<IResultCore<int>> Handle(TCommand command, RequestContextCore Context)

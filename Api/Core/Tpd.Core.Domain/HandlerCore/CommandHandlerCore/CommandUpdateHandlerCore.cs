@@ -37,6 +37,11 @@ namespace Tpd.Core.Domain.HandlerCore.CommandHandlerCore
 
             var newEntity = await CreateNewEntityAsync(oldEntity, command);
             Entity.UpdateWithContext(Context, newEntity);
+            if (command.Model is INotifiable)
+            {
+                var notifyobject = (INotifiable)command.Model;
+                command.Notifications.Add(notifyobject.Notification);
+            }
             return true;
         }
 
