@@ -16,6 +16,11 @@ namespace Tpd.Language.WebApi.Helper
         private static IConnection connection;
         private static IModel channel;
         private static GetTranslationsHandler handler;
+        static RPCServer()
+        {
+
+        }
+
         public static void AddRPCServer(this IApplicationBuilder app)
         {
             handler = app.ApplicationServices.GetService<GetTranslationsHandler>();

@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,12 +7,12 @@ using Tpd.Core.Domain.FluentValidationCore;
 using Tpd.Example.Data.Read;
 using Tpd.Example.Data.Read.Entities;
 using Tpd.Example.Domain.HandlerBase.QueryHandlerBase;
-using Tpd.Example.Domain.MasterDataCategoryDomain.Model;
 using Tpd.Example.Domain.MasterDataCategoryDomain.Request;
+using Tpd.Example.Domain.MasterDataCategoryDomain.Result;
 
 namespace Tpd.Example.Domain.MasterDataCategoryDomain.Handler
 {
-    public class MasterDataCategoryGetItemsHandler : QueryListHandlerBase<GetMasterDataCategoriesQuery, MasterDataCategoryModel>
+    public class MasterDataCategoryGetItemsHandler : QueryListHandlerBase<GetMasterDataCategoriesQuery, MasterDataCategoryResult>
     {
         private DbSet<MasterDataCategory> Entities;
         private readonly IMapper _mapper;
@@ -24,7 +23,7 @@ namespace Tpd.Example.Domain.MasterDataCategoryDomain.Handler
             _mapper = mapper;
         }
 
-        protected override async Task<IQueryable<MasterDataCategoryModel>> BuildQueryAsync(GetMasterDataCategoriesQuery query, RequestContextCore context)
+        protected override async Task<IQueryable<MasterDataCategoryResult>> BuildQueryAsync(GetMasterDataCategoriesQuery query, RequestContextCore context)
         {
             var dataQuery = Entities.AsQueryable();
             if (!string.IsNullOrEmpty(query.Name))
@@ -35,7 +34,13 @@ namespace Tpd.Example.Domain.MasterDataCategoryDomain.Handler
             {
                 dataQuery = dataQuery.Where(w => w.Description.Contains(query.Description));
             }
-            return dataQuery.ProjectTo<MasterDataCategoryModel>(_mapper);
+            return dataQuery.Select(s => new MasterDataCategoryResult
+            {
+                Id = s.Id,
+                Description = s.Description,
+                Name = s.Name
+            });
+            //return dataQuery.ProjectTo<MasterDataCategoryResult>(_mapper);
         }
     }
 }
