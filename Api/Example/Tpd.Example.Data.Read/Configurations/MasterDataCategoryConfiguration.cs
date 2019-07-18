@@ -10,6 +10,7 @@ namespace Tpd.Example.Data.Read.Configurations
         {
             builder.Property(p => p.Name).IsRequired().HasMaxLength(200);
             builder.Property(p => p.Description).HasMaxLength(1000);
+            builder.HasQueryFilter(p => !p.IsDeleted);
         }
     }
 }
