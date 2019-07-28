@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Tpd.Language.Domain.HandlerBase.CommandHandlerBase;
 using Tpd.Language.Domain.HandlerBase.QueryHandlerBase;
-using Tpd.Core.Domain;
+using Tpd.Core.Handler;
 
 namespace Tpd.Language.Domain
 {

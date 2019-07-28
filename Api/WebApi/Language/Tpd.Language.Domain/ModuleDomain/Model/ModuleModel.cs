@@ -1,5 +1,5 @@
 ﻿using System;
-using Tpd.Core.Domain.ModelCore;
+using Tpd.Core.Handler.ModelCore;
 
 namespace Tpd.Language.Domain.ModuleDomain.Model
 {

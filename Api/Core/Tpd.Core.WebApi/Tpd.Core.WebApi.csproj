@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Tpd.Core.Domain\Tpd.Core.Domain.csproj" />
+    <ProjectReference Include="..\Tpd.Core.Handler\Tpd.Core.Handler.csproj" />
   </ItemGroup>
 
   <ItemGroup>

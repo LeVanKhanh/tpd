@@ -1,8 +1,8 @@
 ﻿using MediatR;
 using System;
 using System.Threading.Tasks;
-using Tpd.Core.Domain.HandlerCore;
-using Tpd.Core.Domain.ResultCore;
+using Tpd.Core.Handler.HandlerCore;
+using Tpd.Core.Handler.ResultCore;
 using Tpd.Language.Data.Entities;
 using Tpd.Language.Domain.CultureDomain.Model;
 using Tpd.Language.Domain.CultureDomain.Request;
@@ -11,7 +11,7 @@ using Tpd.Language.Domain.HandlerBase;
 namespace Tpd.Language.Domain.CultureDomain.Handler
 {
     public class CultureHandlerMediator : DomainMediatorBase,
-        IDomainMediator<CultureModel, CultureModel, CultureModel, CultureModel, GetCulturesQuery>
+        IHandlerMediator<CultureModel, CultureModel, CultureModel, CultureModel, GetCulturesQuery>
     {
         public CultureHandlerMediator(IServiceProvider serviceProvider, IMediator mediator)
             : base(serviceProvider, mediator)

@@ -1,4 +1,4 @@
-﻿using Tpd.Core.Domain.RequestCore.QueryCore;
+﻿using Tpd.Core.Handler.RequestCore.QueryCore;
 using Tpd.Example.Domain.MasterDataCategoryDomain.Result;
 
 namespace Tpd.Example.Domain.MasterDataCategoryDomain.Request

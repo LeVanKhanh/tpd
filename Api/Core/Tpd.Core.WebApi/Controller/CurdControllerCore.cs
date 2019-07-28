@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
-using Tpd.Core.Domain.HandlerCore;
-using Tpd.Core.Domain.ModelCore;
-using Tpd.Core.Domain.RequestCore.QueryCore;
+using Tpd.Core.Handler.HandlerCore;
+using Tpd.Core.Handler.ModelCore;
+using Tpd.Core.Handler.RequestCore.QueryCore;
 
 namespace Tpd.Core.WebApi.Controller
 {
@@ -12,8 +12,8 @@ namespace Tpd.Core.WebApi.Controller
         where TModelUpdate : IEntityModel
         where TQuery : IQueryListCore<TGetItemsResponse>
     {
-        protected IDomainMediator<TModelCreate, TModelUpdate, TGetItemResponse, TGetItemsResponse, TQuery> DomainMediator { get; set; }
-        public CurdControllerCore(IDomainMediator<TModelCreate, TModelUpdate, TGetItemResponse, TGetItemsResponse, TQuery> domainMediator)
+        protected IHandlerMediator<TModelCreate, TModelUpdate, TGetItemResponse, TGetItemsResponse, TQuery> DomainMediator { get; set; }
+        public CurdControllerCore(IHandlerMediator<TModelCreate, TModelUpdate, TGetItemResponse, TGetItemsResponse, TQuery> domainMediator)
            : base(domainMediator.Mediator)
         {
             DomainMediator = domainMediator;

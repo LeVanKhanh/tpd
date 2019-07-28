@@ -1,8 +1,8 @@
 ﻿using MediatR;
 using System;
 using System.Threading.Tasks;
-using Tpd.Core.Domain.HandlerCore;
-using Tpd.Core.Domain.ResultCore;
+using Tpd.Core.Handler.HandlerCore;
+using Tpd.Core.Handler.ResultCore;
 using Tpd.Example.Domain.HandlerBase;
 using Tpd.Example.Domain.MasterDataCategoryDomain.Model;
 using Tpd.Example.Domain.MasterDataCategoryDomain.Request;
@@ -13,7 +13,7 @@ using DataWriteEntities = Tpd.Example.Data.Write.Entities;
 namespace Tpd.Example.Domain.MasterDataCategoryDomain.Handler
 {
     public class MasterDataCategoryHandlerMediator : DomainMediatorBase,
-        IDomainMediator<MasterDataCategoryModel, MasterDataCategoryModel, MasterDataCategoryResult, MasterDataCategoryResult, GetMasterDataCategoriesQuery>
+        IHandlerMediator<MasterDataCategoryModel, MasterDataCategoryModel, MasterDataCategoryResult, MasterDataCategoryResult, GetMasterDataCategoriesQuery>
     {
         public MasterDataCategoryHandlerMediator(IServiceProvider serviceProvider, IMediator mediator)
             : base(serviceProvider, mediator)

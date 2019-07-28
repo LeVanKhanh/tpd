@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Tpd.Core.Domain;
+using Tpd.Core.Handler;
 using Tpd.Example.Domain.HandlerBase.CommandHandlerBase;
 using Tpd.Example.Domain.HandlerBase.QueryHandlerBase;
 

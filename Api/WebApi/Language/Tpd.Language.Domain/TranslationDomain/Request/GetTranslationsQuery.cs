@@ -1,4 +1,4 @@
-﻿using Tpd.Core.Domain.RequestCore.QueryCore;
+﻿using Tpd.Core.Handler.RequestCore.QueryCore;
 using Tpd.Language.Domain.TranslationDomain.Result;
 
 namespace Tpd.Language.Domain.TranslationDomain.Request

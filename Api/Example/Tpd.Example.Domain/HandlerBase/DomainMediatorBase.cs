@@ -2,10 +2,10 @@
 using System;
 using System.Threading.Tasks;
 using Tpd.Core.Data;
-using Tpd.Core.Domain.HandlerCore;
-using Tpd.Core.Domain.ModelCore;
-using Tpd.Core.Domain.RequestCore.QueryCore;
-using Tpd.Core.Domain.ResultCore;
+using Tpd.Core.Handler.HandlerCore;
+using Tpd.Core.Handler.ModelCore;
+using Tpd.Core.Handler.RequestCore.QueryCore;
+using Tpd.Core.Handler.ResultCore;
 using Tpd.Example.Domain.HandlerBase.CommandHandlerBase;
 using Tpd.Example.Domain.HandlerBase.QueryHandlerBase;
 

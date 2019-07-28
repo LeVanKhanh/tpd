@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Tpd.Core.Domain.HandlerCore;
+using Tpd.Core.Handler.HandlerCore;
 using Tpd.Core.WebApi.Controller;
 using Tpd.Example.Domain.MasterDataCategoryDomain.Model;
 using Tpd.Example.Domain.MasterDataCategoryDomain.Request;
@@ -13,7 +13,7 @@ namespace Tpd.Example.WebApi.Controllers
         : CurdControllerCore<MasterDataCategoryModel, MasterDataCategoryModel, MasterDataCategoryResult,
         MasterDataCategoryResult, GetMasterDataCategoriesQuery>
     {
-        public MasterDataCategoryController(IDomainMediator<MasterDataCategoryModel, MasterDataCategoryModel, MasterDataCategoryResult,
+        public MasterDataCategoryController(IHandlerMediator<MasterDataCategoryModel, MasterDataCategoryModel, MasterDataCategoryResult,
             MasterDataCategoryResult, GetMasterDataCategoriesQuery> domainMediator)
             : base(domainMediator)
         {

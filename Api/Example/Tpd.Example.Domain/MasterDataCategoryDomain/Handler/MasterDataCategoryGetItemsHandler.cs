@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
 using Tpd.Core.Data;
-using Tpd.Core.Domain.FluentValidationCore;
+using Tpd.Core.Handler.FluentValidationCore;
 using Tpd.Example.Data.Read;
 using Tpd.Example.Data.Read.Entities;
 using Tpd.Example.Domain.HandlerBase.QueryHandlerBase;

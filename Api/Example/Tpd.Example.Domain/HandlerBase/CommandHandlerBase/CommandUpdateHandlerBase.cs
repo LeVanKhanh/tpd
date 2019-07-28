@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using MediatR;
 using Tpd.Core.Data;
-using Tpd.Core.Domain.FluentValidationCore;
-using Tpd.Core.Domain.HandlerCore.CommandHandlerCore;
-using Tpd.Core.Domain.ModelCore;
+using Tpd.Core.Handler.FluentValidationCore;
+using Tpd.Core.Handler.HandlerCore.CommandHandlerCore;
+using Tpd.Core.Handler.ModelCore;
 using Tpd.Example.Data.Write;
 
 namespace Tpd.Example.Domain.HandlerBase.CommandHandlerBase

@@ -1,8 +1,8 @@
 ﻿using MediatR;
 using System;
 using System.Threading.Tasks;
-using Tpd.Core.Domain.HandlerCore;
-using Tpd.Core.Domain.ResultCore;
+using Tpd.Core.Handler.HandlerCore;
+using Tpd.Core.Handler.ResultCore;
 using Tpd.Language.Data.Entities;
 using Tpd.Language.Domain.HandlerBase;
 using Tpd.Language.Domain.TranslationDomain.Model;
@@ -12,7 +12,7 @@ using Tpd.Language.Domain.TranslationDomain.Result;
 namespace Tpd.Language.Domain.TranslationDomain.Handler
 {
     public class TranslationHandlerMediator : DomainMediatorBase,
-        IDomainMediator<TranslationModel, TranslationModel, TranslationModel, ResoureEntryModel, GetTranslationsQuery>
+        IHandlerMediator<TranslationModel, TranslationModel, TranslationModel, ResoureEntryModel, GetTranslationsQuery>
     {
         public TranslationHandlerMediator(IServiceProvider serviceProvider, IMediator mediator)
             : base(serviceProvider, mediator)

@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using System;
-using Tpd.Core.Domain.ModelCore;
+using Tpd.Core.Handler.ModelCore;
 using Tpd.Example.Domain.MasterDataCategoryDomain.Notification;
 
 namespace Tpd.Example.Domain.MasterDataCategoryDomain.Model

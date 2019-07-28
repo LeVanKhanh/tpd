@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Tpd.Core.Data;
-using Tpd.Core.Domain.FluentValidationCore;
-using Tpd.Core.Domain.HandlerCore.QueryHandlerCore;
+using Tpd.Core.Handler.FluentValidationCore;
+using Tpd.Core.Handler.HandlerCore.QueryHandlerCore;
 using Tpd.Example.Data.Read;
 
 namespace Tpd.Example.Domain.HandlerBase.QueryHandlerBase

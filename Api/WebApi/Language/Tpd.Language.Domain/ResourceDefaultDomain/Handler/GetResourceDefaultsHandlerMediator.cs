@@ -1,8 +1,8 @@
 ﻿using MediatR;
 using System;
 using System.Threading.Tasks;
-using Tpd.Core.Domain.HandlerCore;
-using Tpd.Core.Domain.ResultCore;
+using Tpd.Core.Handler.HandlerCore;
+using Tpd.Core.Handler.ResultCore;
 using Tpd.Language.Data.Entities;
 using Tpd.Language.Domain.HandlerBase;
 using Tpd.Language.Domain.ResourceDefaultDomain.Model;
@@ -11,7 +11,7 @@ using Tpd.Language.Domain.ResourceDefaultDomain.Request;
 namespace Tpd.Language.Domain.ResourceDefaultDomain.Handler
 {
     public class GetResourceDefaultsHandlerMediator : DomainMediatorBase,
-        IDomainMediator<ResourceDefaultModel, ResourceDefaultModel, ResourceDefaultModel, ResourceDefaultModel, GetResourceDefaultsQuery>
+        IHandlerMediator<ResourceDefaultModel, ResourceDefaultModel, ResourceDefaultModel, ResourceDefaultModel, GetResourceDefaultsQuery>
     {
         public GetResourceDefaultsHandlerMediator(IServiceProvider serviceProvider, IMediator mediator)
            : base(serviceProvider, mediator)

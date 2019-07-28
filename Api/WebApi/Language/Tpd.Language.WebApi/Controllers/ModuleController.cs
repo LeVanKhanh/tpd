@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Tpd.Core.Domain.HandlerCore;
+using Tpd.Core.Handler.HandlerCore;
 using Tpd.Core.WebApi.Controller;
 using Tpd.Language.Domain.ModuleDomain.Model;
 using Tpd.Language.Domain.ModuleDomain.Request;
@@ -12,7 +12,7 @@ namespace Tpd.Language.WebApi.Controllers
     public class ModuleController : CurdControllerCore<ModuleModel, ModuleModel, ModuleModel,
         GetModulesResult, GetModulesQuery>
     {
-        public ModuleController(IDomainMediator<ModuleModel, ModuleModel, ModuleModel,
+        public ModuleController(IHandlerMediator<ModuleModel, ModuleModel, ModuleModel,
             GetModulesResult, GetModulesQuery> domainMediator)
             : base(domainMediator)
         {

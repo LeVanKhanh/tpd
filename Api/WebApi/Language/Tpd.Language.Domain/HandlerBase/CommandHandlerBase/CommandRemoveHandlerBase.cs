@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Tpd.Core.Data;
-using Tpd.Core.Domain.FluentValidationCore;
-using Tpd.Core.Domain.HandlerCore.CommandHandlerCore;
+using Tpd.Core.Handler.FluentValidationCore;
+using Tpd.Core.Handler.HandlerCore.CommandHandlerCore;
 using Tpd.Language.Data;
 
 namespace Tpd.Language.Domain.HandlerBase.CommandHandlerBase

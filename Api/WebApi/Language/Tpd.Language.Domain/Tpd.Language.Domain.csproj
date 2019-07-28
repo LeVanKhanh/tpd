@@ -11,7 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Core\Tpd.Core.Data\Tpd.Core.Data.csproj" />
-    <ProjectReference Include="..\..\..\Core\Tpd.Core.Domain\Tpd.Core.Domain.csproj" />
+    <ProjectReference Include="..\..\..\Core\Tpd.Core.Handler\Tpd.Core.Handler.csproj" />
     <ProjectReference Include="..\Tpd.Language.Data\Tpd.Language.Data.csproj" />
   </ItemGroup>
 

@@ -1,6 +1,6 @@
-﻿using Tpd.Core.Domain.FluentValidationCore;
-using Tpd.Core.Domain.HandlerCore.QueryHandlerCore;
-using Tpd.Core.Domain.RequestCore.QueryCore;
+﻿using Tpd.Core.Handler.FluentValidationCore;
+using Tpd.Core.Handler.HandlerCore.QueryHandlerCore;
+using Tpd.Core.Handler.RequestCore.QueryCore;
 using Tpd.Example.Data.Read;
 
 namespace Tpd.Example.Domain.HandlerBase.QueryHandlerBase

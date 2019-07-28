@@ -1,8 +1,8 @@
 ﻿using MediatR;
 using System;
 using System.Threading.Tasks;
-using Tpd.Core.Domain.HandlerCore;
-using Tpd.Core.Domain.ResultCore;
+using Tpd.Core.Handler.HandlerCore;
+using Tpd.Core.Handler.ResultCore;
 using Tpd.Language.Data.Entities;
 using Tpd.Language.Domain.HandlerBase;
 using Tpd.Language.Domain.ModuleResourceDomain.Model;
@@ -12,7 +12,7 @@ using Tpd.Language.Domain.ModuleResourceDomain.Result;
 namespace Tpd.Language.Domain.ModuleResourceDomain.Handler
 {
     public class ModuleResourceHandlerMediator : DomainMediatorBase,
-        IDomainMediator<ModuleResourceModel, ModuleResourceModel, ModuleResourceModel, GetModuleResourcesResult, GetModuleResourcesQuery>
+        IHandlerMediator<ModuleResourceModel, ModuleResourceModel, ModuleResourceModel, GetModuleResourcesResult, GetModuleResourcesQuery>
     {
         public ModuleResourceHandlerMediator(IServiceProvider serviceProvider, IMediator mediator)
            : base(serviceProvider, mediator)

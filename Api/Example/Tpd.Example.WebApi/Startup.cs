@@ -49,11 +49,11 @@ namespace Tpd.Example.WebApi
 
             services.AddAutoMapper(Assembly.GetExecutingAssembly(),
                 Assembly.GetAssembly(typeof(DomainMediatorBase)),
-                Assembly.GetAssembly(typeof(Core.Domain.RequestCore.RequestCore)));
+                Assembly.GetAssembly(typeof(Core.Handler.RequestCore.RequestCore)));
 
             services.AddMediatR(Assembly.GetExecutingAssembly(),
                 Assembly.GetAssembly(typeof(DomainMediatorBase)),
-                Assembly.GetAssembly(typeof(Core.Domain.RequestCore.RequestCore)));
+                Assembly.GetAssembly(typeof(Core.Handler.RequestCore.RequestCore)));
 
             services.AddMySwagger(Configuration);
 

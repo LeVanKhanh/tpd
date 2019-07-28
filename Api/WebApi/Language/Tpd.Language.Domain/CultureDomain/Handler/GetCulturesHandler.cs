@@ -3,7 +3,7 @@ using AutoMapper.QueryableExtensions;
 using System.Linq;
 using System.Threading.Tasks;
 using Tpd.Core.Data;
-using Tpd.Core.Domain.FluentValidationCore;
+using Tpd.Core.Handler.FluentValidationCore;
 using Tpd.Language.Data;
 using Tpd.Language.Domain.CultureDomain.Model;
 using Tpd.Language.Domain.CultureDomain.Request;
