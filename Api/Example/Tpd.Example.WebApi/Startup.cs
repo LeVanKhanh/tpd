@@ -81,7 +81,7 @@ namespace Tpd.Example.WebApi
             app.UseElmah();
             app.UseGlobalException();
             app.UseMvc();
-            //app.UseMultilanguage();
+            app.UseMultilanguage();
         }
     }
 }
