@@ -4,7 +4,7 @@ using Tpd.Core.Handler.FluentValidationCore;
 using Tpd.Core.Handler.HandlerCore.CommandHandlerCore;
 using Tpd.Example.Data.Write;
 
-namespace Tpd.Example.Domain.HandlerBase.CommandHandlerBase
+namespace Tpd.Example.Handler.HandlerBase.CommandHandlerBase
 {
     public class CommandRemoveHandlerBase<TEntity> : CommandRemoveHandlerCore<TEntity>
         where TEntity : EntityCore

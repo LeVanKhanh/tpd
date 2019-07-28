@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Tpd.Core.Handler.HandlerCore;
 using Tpd.Core.WebApi.Controller;
-using Tpd.Example.Domain.MasterDataCategoryDomain.Model;
-using Tpd.Example.Domain.MasterDataCategoryDomain.Request;
-using Tpd.Example.Domain.MasterDataCategoryDomain.Result;
+using Tpd.Example.Handler.MasterDataCategoryDomain.Model;
+using Tpd.Example.Handler.MasterDataCategoryDomain.Request;
+using Tpd.Example.Handler.MasterDataCategoryDomain.Result;
 
 namespace Tpd.Example.WebApi.Controllers
 {

@@ -6,14 +6,14 @@ using Tpd.Core.Handler.HandlerCore;
 using Tpd.Core.Handler.ModelCore;
 using Tpd.Core.Handler.RequestCore.QueryCore;
 using Tpd.Core.Handler.ResultCore;
-using Tpd.Example.Domain.HandlerBase.CommandHandlerBase;
-using Tpd.Example.Domain.HandlerBase.QueryHandlerBase;
+using Tpd.Example.Handler.HandlerBase.CommandHandlerBase;
+using Tpd.Example.Handler.HandlerBase.QueryHandlerBase;
 
-namespace Tpd.Example.Domain.HandlerBase
+namespace Tpd.Example.Handler.HandlerBase
 {
-    public abstract class DomainMediatorBase : DomainMediatorCore
+    public abstract class HandlerMediatorBase : DomainMediatorCore
     {
-        public DomainMediatorBase(IServiceProvider serviceProvider, IMediator mediator)
+        public HandlerMediatorBase(IServiceProvider serviceProvider, IMediator mediator)
             : base(serviceProvider, mediator)
         {
         }

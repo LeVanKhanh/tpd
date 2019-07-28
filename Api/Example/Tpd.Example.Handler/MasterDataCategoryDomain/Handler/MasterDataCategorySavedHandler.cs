@@ -4,9 +4,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using Tpd.Example.Data.Read;
 using Tpd.Example.Data.Read.Entities;
-using Tpd.Example.Domain.MasterDataCategoryDomain.Notification;
+using Tpd.Example.Handler.MasterDataCategoryDomain.Notification;
 
-namespace Tpd.Example.Domain.MasterDataCategoryDomain.Handler
+namespace Tpd.Example.Handler.MasterDataCategoryDomain.Handler
 {
     public class MasterDataCategorySavedHandler : INotificationHandler<MasterDataCategoryCreatedNotifcation>
     {

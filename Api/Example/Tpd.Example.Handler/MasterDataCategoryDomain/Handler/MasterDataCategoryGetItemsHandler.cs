@@ -6,11 +6,11 @@ using Tpd.Core.Data;
 using Tpd.Core.Handler.FluentValidationCore;
 using Tpd.Example.Data.Read;
 using Tpd.Example.Data.Read.Entities;
-using Tpd.Example.Domain.HandlerBase.QueryHandlerBase;
-using Tpd.Example.Domain.MasterDataCategoryDomain.Request;
-using Tpd.Example.Domain.MasterDataCategoryDomain.Result;
+using Tpd.Example.Handler.HandlerBase.QueryHandlerBase;
+using Tpd.Example.Handler.MasterDataCategoryDomain.Request;
+using Tpd.Example.Handler.MasterDataCategoryDomain.Result;
 
-namespace Tpd.Example.Domain.MasterDataCategoryDomain.Handler
+namespace Tpd.Example.Handler.MasterDataCategoryDomain.Handler
 {
     public class MasterDataCategoryGetItemsHandler : QueryListHandlerBase<GetMasterDataCategoriesQuery, MasterDataCategoryResult>
     {

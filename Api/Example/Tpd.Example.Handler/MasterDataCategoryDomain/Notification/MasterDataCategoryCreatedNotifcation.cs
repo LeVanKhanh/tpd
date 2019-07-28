@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using System;
 
-namespace Tpd.Example.Domain.MasterDataCategoryDomain.Notification
+namespace Tpd.Example.Handler.MasterDataCategoryDomain.Notification
 {
     public class MasterDataCategoryCreatedNotifcation: INotification
     {

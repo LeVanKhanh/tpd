@@ -3,7 +3,7 @@ using Tpd.Core.Handler.HandlerCore.QueryHandlerCore;
 using Tpd.Core.Handler.RequestCore.QueryCore;
 using Tpd.Example.Data.Read;
 
-namespace Tpd.Example.Domain.HandlerBase.QueryHandlerBase
+namespace Tpd.Example.Handler.HandlerBase.QueryHandlerBase
 {
     public abstract class QueryListHandlerBase<TQuery, TResponse> : QueryListHandlerCore<TQuery, TResponse>
         where TQuery : IQueryListCore<TResponse>

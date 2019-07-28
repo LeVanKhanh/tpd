@@ -1,9 +1,9 @@
 ﻿using MediatR;
 using System;
 using Tpd.Core.Handler.ModelCore;
-using Tpd.Example.Domain.MasterDataCategoryDomain.Notification;
+using Tpd.Example.Handler.MasterDataCategoryDomain.Notification;
 
-namespace Tpd.Example.Domain.MasterDataCategoryDomain.Model
+namespace Tpd.Example.Handler.MasterDataCategoryDomain.Model
 {
     public class MasterDataCategoryModel : IEntityModel, INotifiable
     {

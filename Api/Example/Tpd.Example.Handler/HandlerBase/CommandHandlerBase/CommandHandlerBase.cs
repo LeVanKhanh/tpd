@@ -4,7 +4,7 @@ using Tpd.Core.Handler.HandlerCore.CommandHandlerCore;
 using Tpd.Core.Handler.RequestCore.CommandCore;
 using Tpd.Example.Data.Write;
 
-namespace Tpd.Example.Domain.HandlerBase.CommandHandlerBase
+namespace Tpd.Example.Handler.HandlerBase.CommandHandlerBase
 {
     public abstract class CommandHandlerBase<TCommand> : CommandHandlerCore<TCommand>
         where TCommand : ICommandCore

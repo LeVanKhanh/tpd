@@ -23,7 +23,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Appendix", "Appendix", "{B2
 		Appendix\UrlRewrite.txt = Appendix\UrlRewrite.txt
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tpd.Example.Domain", "Example\Tpd.Example.Domain\Tpd.Example.Domain.csproj", "{6D1D8C1D-739A-452D-B26C-A26D028C03E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tpd.Example.Handler", "Example\Tpd.Example.Handler\Tpd.Example.Handler.csproj", "{6D1D8C1D-739A-452D-B26C-A26D028C03E1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tpd.Core.Share", "Core\Tpd.Core.Share\Tpd.Core.Share.csproj", "{5E440C27-7100-475E-AFBB-7ACE03B9BE50}"
 EndProject

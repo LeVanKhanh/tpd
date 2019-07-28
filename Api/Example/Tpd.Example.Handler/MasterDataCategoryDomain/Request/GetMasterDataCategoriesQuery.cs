@@ -1,7 +1,7 @@
 ﻿using Tpd.Core.Handler.RequestCore.QueryCore;
-using Tpd.Example.Domain.MasterDataCategoryDomain.Result;
+using Tpd.Example.Handler.MasterDataCategoryDomain.Result;
 
-namespace Tpd.Example.Domain.MasterDataCategoryDomain.Request
+namespace Tpd.Example.Handler.MasterDataCategoryDomain.Request
 {
     public class GetMasterDataCategoriesQuery: QueryListCore<MasterDataCategoryResult>
     {

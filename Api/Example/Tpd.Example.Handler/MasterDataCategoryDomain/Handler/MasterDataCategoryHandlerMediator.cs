@@ -3,16 +3,16 @@ using System;
 using System.Threading.Tasks;
 using Tpd.Core.Handler.HandlerCore;
 using Tpd.Core.Handler.ResultCore;
-using Tpd.Example.Domain.HandlerBase;
-using Tpd.Example.Domain.MasterDataCategoryDomain.Model;
-using Tpd.Example.Domain.MasterDataCategoryDomain.Request;
-using Tpd.Example.Domain.MasterDataCategoryDomain.Result;
+using Tpd.Example.Handler.HandlerBase;
+using Tpd.Example.Handler.MasterDataCategoryDomain.Model;
+using Tpd.Example.Handler.MasterDataCategoryDomain.Request;
+using Tpd.Example.Handler.MasterDataCategoryDomain.Result;
 using DataReadEntities = Tpd.Example.Data.Read.Entities;
 using DataWriteEntities = Tpd.Example.Data.Write.Entities;
 
-namespace Tpd.Example.Domain.MasterDataCategoryDomain.Handler
+namespace Tpd.Example.Handler.MasterDataCategoryDomain.Handler
 {
-    public class MasterDataCategoryHandlerMediator : DomainMediatorBase,
+    public class MasterDataCategoryHandlerMediator : HandlerMediatorBase,
         IHandlerMediator<MasterDataCategoryModel, MasterDataCategoryModel, MasterDataCategoryResult, MasterDataCategoryResult, GetMasterDataCategoriesQuery>
     {
         public MasterDataCategoryHandlerMediator(IServiceProvider serviceProvider, IMediator mediator)

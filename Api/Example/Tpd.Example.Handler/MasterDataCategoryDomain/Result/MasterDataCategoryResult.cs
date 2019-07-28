@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Tpd.Example.Domain.MasterDataCategoryDomain.Result
+namespace Tpd.Example.Handler.MasterDataCategoryDomain.Result
 {
     public class MasterDataCategoryResult
     {

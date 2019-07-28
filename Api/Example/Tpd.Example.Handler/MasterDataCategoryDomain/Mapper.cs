@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using DataWriteEntities = Tpd.Example.Data.Write.Entities;
 using DataReadEntities = Tpd.Example.Data.Read.Entities;
-using Tpd.Example.Domain.MasterDataCategoryDomain.Model;
-using Tpd.Example.Domain.MasterDataCategoryDomain.Result;
+using Tpd.Example.Handler.MasterDataCategoryDomain.Model;
+using Tpd.Example.Handler.MasterDataCategoryDomain.Result;
 
-namespace Tpd.Example.Domain.MasterDataCategoryDomain
+namespace Tpd.Example.Handler.MasterDataCategoryDomain
 {
     public class Mapper : Profile
     {

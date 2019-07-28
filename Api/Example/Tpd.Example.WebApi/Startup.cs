@@ -12,8 +12,8 @@ using System.Text;
 using Tpd.Core.WebApi.StartupConfig;
 using Tpd.Example.Data.Read;
 using Tpd.Example.Data.Write;
-using Tpd.Example.Domain;
-using Tpd.Example.Domain.HandlerBase;
+using Tpd.Example.Handler;
+using Tpd.Example.Handler.HandlerBase;
 using Tpd.MultiLanguage;
 
 namespace Tpd.Example.WebApi
@@ -48,11 +48,11 @@ namespace Tpd.Example.WebApi
                });
 
             services.AddAutoMapper(Assembly.GetExecutingAssembly(),
-                Assembly.GetAssembly(typeof(DomainMediatorBase)),
+                Assembly.GetAssembly(typeof(HandlerMediatorBase)),
                 Assembly.GetAssembly(typeof(Core.Handler.RequestCore.RequestCore)));
 
             services.AddMediatR(Assembly.GetExecutingAssembly(),
-                Assembly.GetAssembly(typeof(DomainMediatorBase)),
+                Assembly.GetAssembly(typeof(HandlerMediatorBase)),
                 Assembly.GetAssembly(typeof(Core.Handler.RequestCore.RequestCore)));
 
             services.AddMySwagger(Configuration);

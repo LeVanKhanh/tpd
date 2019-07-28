@@ -6,7 +6,7 @@ using Tpd.Core.Handler.HandlerCore.CommandHandlerCore;
 using Tpd.Core.Handler.ModelCore;
 using Tpd.Example.Data.Write;
 
-namespace Tpd.Example.Domain.HandlerBase.CommandHandlerBase
+namespace Tpd.Example.Handler.HandlerBase.CommandHandlerBase
 {
     public class CommandCreateHandlerBase<TEntity, TModel> : CommandCreateHandlerCore<TEntity, TModel>
         where TEntity : EntityCore
