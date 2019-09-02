@@ -10,7 +10,7 @@ using Tpd.Quiz.Data;
 namespace Tpd.Quiz.Data.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20190728063719_tpd")]
+    [Migration("20190902092203_tpd")]
     partial class tpd
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,15 +33,24 @@ namespace Tpd.Quiz.Data.Migrations
 
                     b.Property<Guid>("CreatedBy");
 
+                    b.Property<string>("Explanation")
+                        .HasMaxLength(2000);
+
                     b.Property<Guid?>("ImageId");
 
                     b.Property<bool>("IsDeleted");
+
+                    b.Property<bool>("IsKey");
+
+                    b.Property<Guid>("QuestionId");
 
                     b.Property<DateTime>("UpdatedAt");
 
                     b.Property<Guid>("UpdatedBy");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("QuestionId");
 
                     b.ToTable("Option");
                 });
@@ -100,39 +109,6 @@ namespace Tpd.Quiz.Data.Migrations
                     b.ToTable("QuestionCategory");
                 });
 
-            modelBuilder.Entity("Tpd.Quiz.Data.Entities.QuestionOption", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<DateTime>("CreatedAt");
-
-                    b.Property<Guid>("CreatedBy");
-
-                    b.Property<string>("Explanation")
-                        .HasMaxLength(2000);
-
-                    b.Property<bool>("IsDeleted");
-
-                    b.Property<bool>("IsKey");
-
-                    b.Property<Guid>("OptionId");
-
-                    b.Property<Guid>("QuestionId");
-
-                    b.Property<DateTime>("UpdatedAt");
-
-                    b.Property<Guid>("UpdatedBy");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OptionId");
-
-                    b.HasIndex("QuestionId");
-
-                    b.ToTable("QuestionOption");
-                });
-
             modelBuilder.Entity("Tpd.Quiz.Data.Entities.QuestionQuestionCategory", b =>
                 {
                     b.Property<Guid>("Id")
@@ -161,38 +137,8 @@ namespace Tpd.Quiz.Data.Migrations
                     b.ToTable("QuestionQuestionCategory");
                 });
 
-            modelBuilder.Entity("Tpd.Quiz.Data.Entities.QuestionStatistic", b =>
+            modelBuilder.Entity("Tpd.Quiz.Data.Entities.Option", b =>
                 {
-                    b.Property<Guid>("Id");
-
-                    b.Property<DateTime>("CreatedAt");
-
-                    b.Property<Guid>("CreatedBy");
-
-                    b.Property<bool>("IsDeleted");
-
-                    b.Property<int>("TotalAnswer");
-
-                    b.Property<int>("TotalCorrect");
-
-                    b.Property<int>("TotalLoad");
-
-                    b.Property<DateTime>("UpdatedAt");
-
-                    b.Property<Guid>("UpdatedBy");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("QuestionStatistic");
-                });
-
-            modelBuilder.Entity("Tpd.Quiz.Data.Entities.QuestionOption", b =>
-                {
-                    b.HasOne("Tpd.Quiz.Data.Entities.Option", "Option")
-                        .WithMany()
-                        .HasForeignKey("OptionId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("Tpd.Quiz.Data.Entities.Question", "Question")
                         .WithMany()
                         .HasForeignKey("QuestionId")
@@ -209,14 +155,6 @@ namespace Tpd.Quiz.Data.Migrations
                     b.HasOne("Tpd.Quiz.Data.Entities.Question", "Question")
                         .WithMany()
                         .HasForeignKey("QuestionId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("Tpd.Quiz.Data.Entities.QuestionStatistic", b =>
-                {
-                    b.HasOne("Tpd.Quiz.Data.Entities.Question", "Question")
-                        .WithMany()
-                        .HasForeignKey("Id")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

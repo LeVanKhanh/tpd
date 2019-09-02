@@ -8,24 +8,6 @@ namespace Tpd.Quiz.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Option",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(nullable: false),
-                    CreatedAt = table.Column<DateTime>(nullable: false),
-                    UpdatedAt = table.Column<DateTime>(nullable: false),
-                    CreatedBy = table.Column<Guid>(nullable: false),
-                    UpdatedBy = table.Column<Guid>(nullable: false),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    Answer = table.Column<string>(maxLength: 1000, nullable: true),
-                    ImageId = table.Column<Guid>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Option", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Question",
                 columns: table => new
                 {
@@ -63,7 +45,7 @@ namespace Tpd.Quiz.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "QuestionOption",
+                name: "Option",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
@@ -73,47 +55,17 @@ namespace Tpd.Quiz.Data.Migrations
                     UpdatedBy = table.Column<Guid>(nullable: false),
                     IsDeleted = table.Column<bool>(nullable: false),
                     QuestionId = table.Column<Guid>(nullable: false),
-                    OptionId = table.Column<Guid>(nullable: false),
+                    Answer = table.Column<string>(maxLength: 1000, nullable: true),
+                    ImageId = table.Column<Guid>(nullable: true),
                     IsKey = table.Column<bool>(nullable: false),
                     Explanation = table.Column<string>(maxLength: 2000, nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_QuestionOption", x => x.Id);
+                    table.PrimaryKey("PK_Option", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_QuestionOption_Option_OptionId",
-                        column: x => x.OptionId,
-                        principalTable: "Option",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_QuestionOption_Question_QuestionId",
+                        name: "FK_Option_Question_QuestionId",
                         column: x => x.QuestionId,
-                        principalTable: "Question",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "QuestionStatistic",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(nullable: false),
-                    CreatedAt = table.Column<DateTime>(nullable: false),
-                    UpdatedAt = table.Column<DateTime>(nullable: false),
-                    CreatedBy = table.Column<Guid>(nullable: false),
-                    UpdatedBy = table.Column<Guid>(nullable: false),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    TotalLoad = table.Column<int>(nullable: false),
-                    TotalAnswer = table.Column<int>(nullable: false),
-                    TotalCorrect = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_QuestionStatistic", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_QuestionStatistic_Question_Id",
-                        column: x => x.Id,
                         principalTable: "Question",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -150,13 +102,8 @@ namespace Tpd.Quiz.Data.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_QuestionOption_OptionId",
-                table: "QuestionOption",
-                column: "OptionId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_QuestionOption_QuestionId",
-                table: "QuestionOption",
+                name: "IX_Option_QuestionId",
+                table: "Option",
                 column: "QuestionId");
 
             migrationBuilder.CreateIndex(
@@ -173,16 +120,10 @@ namespace Tpd.Quiz.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "QuestionOption");
+                name: "Option");
 
             migrationBuilder.DropTable(
                 name: "QuestionQuestionCategory");
-
-            migrationBuilder.DropTable(
-                name: "QuestionStatistic");
-
-            migrationBuilder.DropTable(
-                name: "Option");
 
             migrationBuilder.DropTable(
                 name: "QuestionCategory");
