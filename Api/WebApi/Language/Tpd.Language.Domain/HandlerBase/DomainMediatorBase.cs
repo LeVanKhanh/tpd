@@ -11,7 +11,7 @@ using Tpd.Language.Domain.HandlerBase.QueryHandlerBase;
 
 namespace Tpd.Language.Domain.HandlerBase
 {
-    public abstract class DomainMediatorBase : DomainMediatorCore
+    public abstract class DomainMediatorBase : HandlerMediatorCore
     {
         public DomainMediatorBase(IServiceProvider serviceProvider, IMediator mediator)
             : base(serviceProvider, mediator)

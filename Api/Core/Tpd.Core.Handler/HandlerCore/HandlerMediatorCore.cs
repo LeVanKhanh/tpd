@@ -12,11 +12,11 @@ using Tpd.Core.Handler.ResultCore;
 
 namespace Tpd.Core.Handler.HandlerCore
 {
-    public abstract class DomainMediatorCore
+    public abstract class HandlerMediatorCore
     {
         public IMediator Mediator { get; set; }
         public IServiceProvider _serviceProvider { get; set; }
-        public DomainMediatorCore(IServiceProvider serviceProvider, IMediator mediator)
+        public HandlerMediatorCore(IServiceProvider serviceProvider, IMediator mediator)
         {
             Mediator = mediator;
             _serviceProvider = serviceProvider;

@@ -6,12 +6,12 @@ using Tpd.Core.Handler.HandlerCore;
 using Tpd.Core.Handler.ModelCore;
 using Tpd.Core.Handler.RequestCore.QueryCore;
 using Tpd.Core.Handler.ResultCore;
-using Tpd.Example.Handler.HandlerBase.CommandHandlerBase;
-using Tpd.Example.Handler.HandlerBase.QueryHandlerBase;
+using Tpd.Quiz.Handler.HandlerBase.CommandHandlerBase;
+using Tpd.Quiz.Handler.HandlerBase.QueryHandlerBase;
 
-namespace Tpd.Example.Handler.HandlerBase
+namespace Tpd.Quiz.Handler.HandlerBase
 {
-    public abstract class HandlerMediatorBase : HandlerMediatorCore
+    public class HandlerMediatorBase : HandlerMediatorCore
     {
         public HandlerMediatorBase(IServiceProvider serviceProvider, IMediator mediator)
             : base(serviceProvider, mediator)
